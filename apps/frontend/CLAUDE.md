@@ -221,3 +221,4 @@ Pure logic (i18n, utils, api) is tested directly with stubbed `fetch`/`t`; compo
 - `.github/workflows/`, CI/CD, Docker behavior
 - Existing tests (no removal/disabling)
 - `next.config.ts` rewrites / proxy behavior unless the task is about it
+

@@ -54,7 +54,7 @@ export default function JobAnalysisPage() {
     setPreparing(true);
     setError(null);
     try {
-      window.location.assign(`/careerpilot/applications/${encodeURIComponent(params.id)}`);
+      window.location.assign(`/careerpilot/applications/prepare/${encodeURIComponent(params.id)}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unable to prepare application.');
       setPreparing(false);
