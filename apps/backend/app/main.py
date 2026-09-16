@@ -31,6 +31,9 @@ from app.routers import (
     resume_wizard_router,
     resumes_router,
 )
+from app.routers.career_intelligence import router as career_intelligence_router
+from app.routers.activity_log import router as activity_log_router
+from app.routers.demo_mode import router as demo_mode_router
 from app.routers.resumes import drain_processing_cleanup_tasks
 
 
@@ -112,6 +115,9 @@ app.include_router(config_router, prefix="/api/v1")
 app.include_router(resumes_router, prefix="/api/v1")
 app.include_router(jobs_router, prefix="/api/v1")
 app.include_router(careerpilot_router, prefix="/api/v1")
+app.include_router(career_intelligence_router, prefix="/api/v1")
+app.include_router(activity_log_router, prefix="/api/v1")
+app.include_router(demo_mode_router, prefix="/api/v1")
 app.include_router(enrichment_router, prefix="/api/v1")
 app.include_router(applications_router, prefix="/api/v1")
 app.include_router(resume_wizard_router, prefix="/api/v1")
