@@ -1,0 +1,92 @@
+# Dependencies
+**/node_modules/
+.venv/
+venv/
+env/
+ENV/
+
+# Python caches and build output
+__pycache__/
+*.py[cod]
+*.so
+.Python
+*.egg-info/
+.eggs/
+build/
+dist/
+develop-eggs/
+downloads/
+eggs/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+
+# Next.js and frontend build output
+**/.next/
+**/out/
+**/coverage/
+**/build/
+*.tsbuildinfo
+
+# Test and runtime artifacts
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+artifacts/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+**/config.json
+**/data/.secret_key
+*.pem
+
+# Local databases and SQLite sidecars
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+**/data/*.json
+**/data/*.migrated
+!**/data/.gitkeep
+
+# Package-manager and debug logs
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Deployment and local tooling
+.vercel/
+.cursor/
+.cursorrules
+.idea/
+.vscode/
+.claude/*
+!.claude/CLAUDE.md
+!.claude/settings.json
+.agents/
+.kilocode/
+.gemini/
+.codex/
+.firecrawl/
+.superpowers/
+/.claude/skills/monitor-e2e/
+
+# OS/editor files
+.DS_Store
+*.swp
+next-env.d.ts
