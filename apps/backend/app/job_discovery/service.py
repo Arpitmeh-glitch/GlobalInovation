@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from app.database import db
@@ -48,6 +49,52 @@ class JobDiscoveryService:
         normalized.setdefault("screening_questions", [])
         return normalized
 
+    @staticmethod
+    def _experience_bounds(value: Any) -> tuple[int | None, int | None]:
+        numbers = [int(item) for item in re.findall(r"\d+", str(value or ""))]
+        if not numbers:
+            return None, None
+        return numbers[0], numbers[1] if len(numbers) > 1 else numbers[0]
+
+    @classmethod
+    def _matches_generic_criteria(cls, job: dict[str, Any], criteria: dict[str, Any]) -> bool:
+        minimum_salary = criteria.get("min_salary")
+        maximum_salary = criteria.get("max_salary")
+        salary_min = job.get("salary_min")
+        salary_max = job.get("salary_max")
+        if minimum_salary is not None and (salary_max is None or salary_max < int(minimum_salary)):
+            return False
+        if maximum_salary is not None and (salary_min is None or salary_min > int(maximum_salary)):
+            return False
+
+        minimum_experience = criteria.get("min_experience")
+        maximum_experience = criteria.get("max_experience")
+        experience_min, experience_max = cls._experience_bounds(job.get("experience_required"))
+        if minimum_experience is not None and (experience_max is None or experience_max < int(minimum_experience)):
+            return False
+        if maximum_experience is not None and (experience_min is None or experience_min > int(maximum_experience)):
+            return False
+        return True
+
+    @classmethod
+    def _sort_jobs(cls, jobs: list[dict[str, Any]], criteria: dict[str, Any]) -> list[dict[str, Any]]:
+        sort_by = str(criteria.get("sort_by") or "discovered_at")
+        reverse = str(criteria.get("sort_order") or "desc").lower() != "asc"
+
+        def sort_value(job: dict[str, Any]) -> Any:
+            if sort_by == "salary":
+                return job.get("salary_max") if reverse else job.get("salary_min")
+            if sort_by == "title":
+                return str(job.get("title") or "").lower()
+            if sort_by == "company":
+                return str(job.get("company") or "").lower()
+            return str(job.get(sort_by) or "")
+
+        present = [job for job in jobs if sort_value(job) is not None and sort_value(job) != ""]
+        missing = [job for job in jobs if job not in present]
+        present.sort(key=sort_value, reverse=reverse)
+        return present + missing
+
     def discover_jobs(self, criteria: dict[str, Any] | None = None, *, persist: bool = True) -> list[dict[str, Any]]:
         criteria = criteria or {}
         seen: set[str] = set()
@@ -56,6 +103,8 @@ class JobDiscoveryService:
         for provider in self.providers:
             for raw_job in provider.search_jobs(criteria=criteria):
                 normalized = self._normalize_job(raw_job)
+                if not self._matches_generic_criteria(normalized, criteria):
+                    continue
                 dedupe_key = self._dedupe_key(normalized)
                 if dedupe_key in seen:
                     continue
@@ -67,6 +116,19 @@ class JobDiscoveryService:
                 db.upsert_careerpilot_job_sync(job)
 
         return jobs
+
+    @classmethod
+    def paginate_jobs(
+        cls, jobs: list[dict[str, Any]], criteria: dict[str, Any] | None = None
+    ) -> tuple[list[dict[str, Any]], int, int, int, bool]:
+        criteria = criteria or {}
+        ordered = cls._sort_jobs(jobs, criteria)
+        total = len(ordered)
+        offset = max(0, int(criteria.get("offset") or 0))
+        raw_limit = criteria.get("limit")
+        limit = max(1, min(100, int(raw_limit))) if raw_limit is not None else total
+        page = ordered[offset : offset + limit]
+        return page, total, offset, limit, offset + len(page) < total
 
     async def discover_jobs_async(
         self, criteria: dict[str, Any] | None = None, *, persist: bool = True

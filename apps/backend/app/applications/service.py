@@ -148,6 +148,9 @@ async def get_application_review(application_id: str) -> dict[str, Any]:
     if application is None:
         raise LookupError("Application not found")
     events = await db.list_application_events(application_id)
+    job = await db.get_job(application["job_id"])
+    if job is None:
+        job = await JobDiscoveryService(providers=get_default_providers()).get_job(application["job_id"])
     return {
         "application_id": application_id,
         "job_id": application["job_id"],
@@ -158,6 +161,8 @@ async def get_application_review(application_id: str) -> dict[str, Any]:
         "tracker_status": application.get("tracker_status") or application["status"],
         "company": application.get("company"),
         "role": application.get("role"),
+        "application_url": job.get("application_url") if job else None,
+        "provider": job.get("provider") if job else None,
         "match": application.get("match") or {},
         "changes": application.get("changes") or [],
         "claim_validation": application.get("claim_validation") or {},

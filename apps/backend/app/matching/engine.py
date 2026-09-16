@@ -60,6 +60,30 @@ class JobMatchingEngine:
         match = re.search(r"(\d+)\s*\+?\s*(?:years?|yrs?)", value.lower())
         return int(match.group(1)) if match else None
 
+    def _experience_bounds(self, value: Any) -> tuple[int | None, int | None]:
+        numbers = [int(item) for item in re.findall(r"\d+", str(value or ""))]
+        if not numbers:
+            return None, None
+        return numbers[0], numbers[1] if len(numbers) > 1 else numbers[0]
+
+    def _is_education_requirement(self, value: str) -> bool:
+        return bool(re.search(r"degree|bachelor|master|ph\.d|education|diploma", value.lower()))
+
+    def _education_value_matches(self, education: str, requirement: str) -> bool:
+        education_norm = self._normalize(education)
+        requirement_norm = self._normalize(requirement)
+        if self._text_matches(education_norm, requirement_norm) or self._text_matches(requirement_norm, education_norm):
+            return True
+        education_levels = {
+            "bachelor": ("bachelor", "b.s", "bs", "bsc"),
+            "master": ("master", "m.s", "ms", "msc"),
+            "doctorate": ("doctor", "ph.d", "phd"),
+        }
+        return any(
+            level in requirement_norm and any(alias in education_norm for alias in aliases)
+            for level, aliases in education_levels.items()
+        )
+
     def _is_certification_requirement(self, value: str) -> bool:
         return bool(re.search(r"certif(?:icate|ication|ied)", value.lower()))
 
@@ -124,6 +148,25 @@ class JobMatchingEngine:
                 missing_requirements.append(qualification)
 
         experience_years = self._experience_years(resume_tokens)
+        required_experience = job.get("experience_required")
+        required_experience_min, _ = self._experience_bounds(required_experience)
+        experience_match: bool | None = None
+        if required_experience_min is not None:
+            experience_match = experience_years is not None and experience_years >= required_experience_min
+        elif experience_years is not None:
+            experience_match = True
+
+        education_match: bool | None = None
+        education_requirements = [
+            qualification for qualification in qualifications
+            if self._is_education_requirement(qualification)
+        ]
+        if education_requirements:
+            education_match = any(
+                self._education_value_matches(value, qualification)
+                for qualification in education_requirements
+                for value in resume_tokens["education"]
+            )
         for requirement in hard_requirements:
             required_years = self._required_years(requirement)
             if required_years is not None:
@@ -153,6 +196,8 @@ class JobMatchingEngine:
         if required_skills:
             skill_points = min(100, round((len(matched_requirements) / max(len(required_skills), 1)) * 100))
         experience_score = 60 if experience_years is not None else 25
+        if experience_match is False:
+            experience_score = 20
         qualification_score = 70 if qualifications and not missing_requirements else 60
         role_score = 80 if resume_tokens["skills"] else 50
         location_score = 100
@@ -189,6 +234,16 @@ class JobMatchingEngine:
         return {
             "overall_score": max(0, min(100, overall_score)),
             "recommendation": recommendation,
+            "matched_skills": sorted(set(
+                skill for skill in required_skills + preferred_skills
+                if self._match_skill(skill, resume_tokens)[0]
+            )),
+            "missing_skills": sorted(set(
+                skill for skill in required_skills + preferred_skills
+                if not self._match_skill(skill, resume_tokens)[0]
+            )),
+            "experience_match": experience_match,
+            "education_match": education_match,
             "matched_requirements": sorted(set(matched_requirements)),
             "partially_matched_requirements": sorted(set(partially_matched_requirements)),
             "missing_requirements": sorted(set(missing_requirements)),

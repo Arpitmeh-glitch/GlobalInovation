@@ -30,6 +30,8 @@ class CareerPilotApplicationResponse(BaseModel):
     tracker_status: str
     company: str | None = None
     role: str | None = None
+    application_url: str | None = None
+    provider: str | None = None
     match: dict[str, Any] = Field(default_factory=dict)
     changes: list[dict[str, Any]] = Field(default_factory=list)
     claim_validation: dict[str, Any] = Field(default_factory=dict)

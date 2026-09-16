@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
+import logging
 from typing import Any
 
 from fastapi import APIRouter, HTTPException, Query
 
-from app.database import db
+from app.database import DatabaseBusyError, db
 from app.applications.service import (
     get_application_review,
     prepare_application,
@@ -37,6 +38,55 @@ from app.schemas.careerpilot_applications import (
 )
 
 router = APIRouter(prefix="/careerpilot", tags=["CareerPilot"])
+logger = logging.getLogger(__name__)
+
+
+def _discovery_response(
+    jobs: list[dict[str, Any]], criteria: dict[str, Any]
+) -> CareerPilotDiscoveryResponse:
+    page, total, offset, limit, has_more = JobDiscoveryService.paginate_jobs(jobs, criteria)
+    return CareerPilotDiscoveryResponse(
+        jobs=[CareerPilotJob.model_validate(job) for job in page],
+        total=total,
+        offset=offset,
+        limit=limit,
+        has_more=has_more,
+        demo_mode=True,
+    )
+
+
+def _query_criteria(
+    role: str | None,
+    location: str | None,
+    work_mode: str | None,
+    employment_type: str | None,
+    min_salary: int | None,
+    max_salary: int | None,
+    min_experience: int | None,
+    max_experience: int | None,
+    sort_by: str,
+    sort_order: str,
+    offset: int,
+    limit: int,
+) -> dict[str, Any]:
+    return {
+        key: value
+        for key, value in {
+            "role": role,
+            "location": location,
+            "work_mode": work_mode,
+            "employment_type": employment_type,
+            "min_salary": min_salary,
+            "max_salary": max_salary,
+            "min_experience": min_experience,
+            "max_experience": max_experience,
+            "sort_by": sort_by,
+            "sort_order": sort_order,
+            "offset": offset,
+            "limit": limit,
+        }.items()
+        if value is not None
+    }
 
 
 def _careerpilot_job_payload(job: dict[str, Any]) -> dict[str, Any]:
@@ -92,26 +142,54 @@ async def save_profile(request: CareerPilotProfileInput) -> CareerPilotProfileRe
 
 
 @router.get("/jobs", response_model=CareerPilotDiscoveryResponse)
-async def list_jobs() -> CareerPilotDiscoveryResponse:
-    jobs = await db.list_careerpilot_jobs(limit=50)
-    return CareerPilotDiscoveryResponse(
-        jobs=[CareerPilotJob.model_validate(await _job_with_match(job)) for job in jobs],
-        total=len(jobs),
-        demo_mode=True,
+async def list_jobs(
+    role: str | None = Query(default=None),
+    location: str | None = Query(default=None),
+    work_mode: str | None = Query(default=None),
+    employment_type: str | None = Query(default=None),
+    min_salary: int | None = Query(default=None, ge=0),
+    max_salary: int | None = Query(default=None, ge=0),
+    min_experience: int | None = Query(default=None, ge=0),
+    max_experience: int | None = Query(default=None, ge=0),
+    sort_by: str = Query(default="discovered_at"),
+    sort_order: str = Query(default="desc", pattern="^(asc|desc)$"),
+    offset: int = Query(default=0, ge=0),
+    limit: int = Query(default=20, ge=1, le=100),
+) -> CareerPilotDiscoveryResponse:
+    criteria = _query_criteria(
+        role, location, work_mode, employment_type, min_salary, max_salary,
+        min_experience, max_experience, sort_by, sort_order, offset, limit,
     )
+    service = JobDiscoveryService(providers=get_default_providers())
+    try:
+        jobs = await service.discover_jobs_async(criteria=criteria, persist=True)
+    except DatabaseBusyError:
+        raise
+    except Exception as error:
+        logger.exception("CareerPilot provider discovery failed")
+        raise HTTPException(status_code=503, detail="Job providers are currently unavailable.") from error
+    jobs = [await _job_with_match(job) for job in jobs]
+    if sort_by == "match_score":
+        jobs.sort(key=lambda job: (job.get("match") or {}).get("overall_score", -1), reverse=sort_order == "desc")
+    return _discovery_response(jobs, criteria)
 
 
 @router.post("/jobs/discover", response_model=CareerPilotDiscoveryResponse)
 async def discover_jobs(request: CareerPilotDiscoveryRequest) -> CareerPilotDiscoveryResponse:
     service = JobDiscoveryService(providers=get_default_providers())
-    jobs = await service.discover_jobs_async(criteria=request.criteria, persist=request.persist)
+    criteria = request.criteria.model_dump(exclude_none=True)
+    try:
+        jobs = await service.discover_jobs_async(criteria=criteria, persist=request.persist)
+    except DatabaseBusyError:
+        raise
+    except Exception as error:
+        logger.exception("CareerPilot provider discovery failed")
+        raise HTTPException(status_code=503, detail="Job providers are currently unavailable.") from error
     jobs = [await _job_with_match(job) for job in jobs]
-    jobs.sort(key=lambda job: (job.get("match") or {}).get("overall_score", -1), reverse=True)
-    return CareerPilotDiscoveryResponse(
-        jobs=[CareerPilotJob.model_validate(job) for job in jobs],
-        total=len(jobs),
-        demo_mode=True,
-    )
+    if criteria.get("sort_by") == "discovered_at":
+        criteria["sort_by"] = "match_score"
+        jobs.sort(key=lambda job: (job.get("match") or {}).get("overall_score", -1), reverse=True)
+    return _discovery_response(jobs, criteria)
 
 
 @router.get("/jobs/{job_id}", response_model=CareerPilotJobDetailResponse)

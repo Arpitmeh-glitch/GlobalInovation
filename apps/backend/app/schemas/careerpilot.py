@@ -33,8 +33,24 @@ class CareerPilotJob(BaseModel):
     match: "CareerPilotMatchResult | None" = None
 
 
+class CareerPilotDiscoveryCriteria(BaseModel):
+    role: str | None = None
+    location: str | None = None
+    work_mode: str | None = None
+    employment_type: str | None = None
+    keywords: list[str] = Field(default_factory=list)
+    min_salary: int | None = Field(default=None, ge=0)
+    max_salary: int | None = Field(default=None, ge=0)
+    min_experience: int | None = Field(default=None, ge=0)
+    max_experience: int | None = Field(default=None, ge=0)
+    sort_by: str = "discovered_at"
+    sort_order: str = Field(default="desc", pattern="^(asc|desc)$")
+    offset: int = Field(default=0, ge=0)
+    limit: int = Field(default=20, ge=1, le=100)
+
+
 class CareerPilotDiscoveryRequest(BaseModel):
-    criteria: dict[str, Any] = Field(default_factory=dict)
+    criteria: CareerPilotDiscoveryCriteria = Field(default_factory=CareerPilotDiscoveryCriteria)
     persist: bool = True
 
 
@@ -60,11 +76,18 @@ class CareerPilotDiscoveryResponse(BaseModel):
     jobs: list[CareerPilotJob]
     total: int
     demo_mode: bool = True
+    offset: int = 0
+    limit: int | None = None
+    has_more: bool = False
 
 
 class CareerPilotMatchResult(BaseModel):
     overall_score: int
     recommendation: str
+    matched_skills: list[str] = Field(default_factory=list)
+    missing_skills: list[str] = Field(default_factory=list)
+    experience_match: bool | None = None
+    education_match: bool | None = None
     matched_requirements: list[str] = Field(default_factory=list)
     partially_matched_requirements: list[str] = Field(default_factory=list)
     missing_requirements: list[str] = Field(default_factory=list)
