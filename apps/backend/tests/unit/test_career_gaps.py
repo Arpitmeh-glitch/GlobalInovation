@@ -26,3 +26,42 @@ async def test_gap_frequency_order_and_classification() -> None:
     assert result.gaps[1].gap_type == "skill_gap"
     assert "AWS" in result.gaps[0].recommendation
     assert "Docker" in result.gaps[1].recommendation
+
+
+@pytest.mark.asyncio
+async def test_career_gap_dao_scopes_and_replaces_generated_gaps(isolated_backend_state) -> None:
+    created = await isolated_backend_state.create_career_gap(
+        profile_id="profile-1",
+        gap_type="skill_gap",
+        name="Docker",
+        explanation="Docker appears in analyzed requirements.",
+        recommendation="Build a Docker project.",
+        frequency=2,
+    )
+    await isolated_backend_state.create_career_gap(
+        profile_id="profile-2",
+        gap_type="evidence_gap",
+        name="AWS",
+        explanation="AWS appears in the resume but lacks a declared skill entry.",
+        recommendation="Add verified AWS evidence.",
+    )
+
+    assert (await isolated_backend_state.get_career_gap(created["gap_id"]))["name"] == "Docker"
+    profile_one = await isolated_backend_state.list_career_gaps(profile_id="profile-1")
+    assert [gap["name"] for gap in profile_one] == ["Docker"]
+
+    replaced = await isolated_backend_state.replace_career_gaps(
+        [
+            {
+                "gap_type": "skill_gap",
+                "name": "Terraform",
+                "explanation": "Terraform appears in analyzed requirements.",
+                "recommendation": "Complete a Terraform project.",
+                "frequency": 3,
+            }
+        ],
+        profile_id="profile-1",
+    )
+    assert [gap["name"] for gap in replaced] == ["Terraform"]
+    assert [gap["name"] for gap in await isolated_backend_state.list_career_gaps(profile_id="profile-1")] == ["Terraform"]
+    assert [gap["name"] for gap in await isolated_backend_state.list_career_gaps(profile_id="profile-2")] == ["AWS"]

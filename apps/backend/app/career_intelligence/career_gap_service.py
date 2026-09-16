@@ -7,6 +7,7 @@ from typing import Any
 
 from app.job_discovery.service import JobDiscoveryService
 from app.job_providers.registry import get_default_providers
+from app.database import db
 from app.schemas.career_intelligence import CareerGapItem, CareerGapsResponse
 
 
@@ -58,6 +59,9 @@ class CareerGapService:
         *,
         criteria: dict[str, Any] | None = None,
         target_role: str | None = None,
+        profile_id: str | None = None,
+        user_id: str | None = None,
+        persist: bool = False,
     ) -> CareerGapsResponse:
         filters = dict(criteria or {})
         if target_role and "role" not in filters:
@@ -89,9 +93,35 @@ class CareerGapService:
                 )
             )
 
-        return CareerGapsResponse(
+        response = CareerGapsResponse(
             gaps=gaps,
             target_role=target_role or filters.get("role"),
             filters=filters,
             total_jobs_analyzed=len(jobs),
         )
+        if persist:
+            if profile_id is None and user_id is None:
+                raise ValueError("A profile_id or user_id is required to persist career gaps")
+            stored_gaps = [
+                {
+                    "gap_type": gap.gap_type,
+                    "name": gap.name,
+                    "frequency": gap.frequency,
+                    "explanation": (
+                        f"{gap.name} appears in {gap.frequency} analyzed job requirements "
+                        + (
+                            "and is present in resume text but not declared as a skill."
+                            if gap.gap_type == "evidence_gap"
+                            else "but is not supported by the candidate resume."
+                        )
+                    ),
+                    "recommendation": gap.recommendation,
+                }
+                for gap in gaps
+            ]
+            await db.replace_career_gaps(
+                stored_gaps,
+                profile_id=profile_id,
+                user_id=user_id,
+            )
+        return response

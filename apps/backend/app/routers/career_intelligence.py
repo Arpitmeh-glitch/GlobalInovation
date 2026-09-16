@@ -35,6 +35,7 @@ async def career_gaps(
     employment_type: str | None = Query(default=None, max_length=40),
 ) -> CareerGapsResponse:
     resume = await _resume_for_request(resume_id)
+    profile = await db.get_careerpilot_profile()
     criteria = {
         key: value
         for key, value in {
@@ -45,7 +46,13 @@ async def career_gaps(
         if value is not None
     }
     try:
-        return await CareerGapService().analyze(resume, criteria=criteria, target_role=role)
+        return await CareerGapService().analyze(
+            resume,
+            criteria=criteria,
+            target_role=role,
+            profile_id=profile.get("profile_id") if profile else None,
+            persist=profile is not None,
+        )
     except Exception as error:
         raise HTTPException(status_code=503, detail="Career gap analysis is currently unavailable.") from error
 

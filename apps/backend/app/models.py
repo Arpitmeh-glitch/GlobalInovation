@@ -191,6 +191,25 @@ class AgentActivity(Base):
     created_at: Mapped[str] = mapped_column(String, default=_utcnow_iso, index=True)
 
 
+class CareerGap(Base):
+    """A generated, explainable gap tied to a CareerPilot profile."""
+
+    __tablename__ = "career_gaps"
+
+    gap_id: Mapped[str] = mapped_column(String, primary_key=True)
+    profile_id: Mapped[str | None] = mapped_column(String, nullable=True, index=True)
+    user_id: Mapped[str | None] = mapped_column(String, nullable=True, index=True)
+    job_id: Mapped[str | None] = mapped_column(String, nullable=True, index=True)
+    gap_type: Mapped[str] = mapped_column(String, index=True)
+    name: Mapped[str] = mapped_column(String)
+    explanation: Mapped[str] = mapped_column(Text)
+    recommendation: Mapped[str] = mapped_column(Text)
+    frequency: Mapped[int] = mapped_column(Integer, default=1)
+    priority: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    created_at: Mapped[str] = mapped_column(String, default=_utcnow_iso, index=True)
+    updated_at: Mapped[str] = mapped_column(String, default=_utcnow_iso)
+
+
 class ApiKey(Base):
     """An encrypted LLM provider API key.
 

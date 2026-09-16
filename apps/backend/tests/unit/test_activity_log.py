@@ -35,6 +35,20 @@ async def test_activity_log_filters_and_paginates(isolated_backend_state) -> Non
 
 
 @pytest.mark.asyncio
+async def test_public_activity_dao_persists_and_lists_events(isolated_backend_state) -> None:
+    created = await isolated_backend_state.create_agent_activity(
+        activity_type="demo",
+        action="reset",
+        details={"demo": True},
+        user_id="demo-user",
+        created_at="2026-01-01T00:00:00+00:00",
+    )
+
+    events = await isolated_backend_state.list_agent_activities(user_id="demo-user")
+    assert events == [created]
+
+
+@pytest.mark.asyncio
 async def test_activity_log_redacts_sensitive_values_before_persisting(isolated_backend_state) -> None:
     created = await log_activity(
         "settings",

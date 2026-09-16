@@ -7,10 +7,7 @@ from collections.abc import Mapping
 from datetime import datetime, timezone
 from typing import Any, Literal
 
-from sqlalchemy import select
-
 from app.database import db
-from app.models import AgentActivity
 
 REDACTED = "[REDACTED]"
 ActivityStatus = Literal["success", "failure"]
@@ -45,15 +42,15 @@ def _now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def _activity_payload(row: AgentActivity) -> dict[str, Any]:
+def _activity_payload(row: dict[str, Any]) -> dict[str, Any]:
     return {
-        "id": row.id,
-        "user_id": row.user_id,
-        "activity_type": row.activity_type,
-        "action": row.action,
-        "details": redact_sensitive_data(row.details or {}),
-        "status": row.status,
-        "created_at": row.created_at,
+        "id": row["id"],
+        "user_id": row["user_id"],
+        "activity_type": row["activity_type"],
+        "action": row["action"],
+        "details": redact_sensitive_data(row.get("details") or {}),
+        "status": row["status"],
+        "created_at": row["created_at"],
     }
 
 
@@ -70,19 +67,15 @@ async def log_activity(
     if status not in ("success", "failure"):
         raise ValueError("Activity status must be success or failure")
     redacted_details = redact_sensitive_data(dict(details or {}))
-    async with db._write_session() as session:
-        row = AgentActivity(
-            user_id=user_id,
-            activity_type=activity_type,
-            action=action,
-            details=redacted_details,
-            status=status,
-            created_at=created_at or _now_iso(),
-        )
-        session.add(row)
-        await session.commit()
-        await session.refresh(row)
-        return _activity_payload(row)
+    row = await db.create_agent_activity(
+        activity_type=activity_type,
+        action=action,
+        details=redacted_details,
+        user_id=user_id,
+        status=status,
+        created_at=created_at or _now_iso(),
+    )
+    return _activity_payload(row)
 
 
 async def get_activities(
@@ -93,18 +86,10 @@ async def get_activities(
     offset: int = 0,
 ) -> list[dict[str, Any]]:
     """Return redacted activities newest-first with deterministic tie ordering."""
-    filters = []
-    if activity_type:
-        filters.append(AgentActivity.activity_type == activity_type)
-    if user_id:
-        filters.append(AgentActivity.user_id == user_id)
-    async with db._session() as session:
-        statement = (
-            select(AgentActivity)
-            .where(*filters)
-            .order_by(AgentActivity.created_at.desc(), AgentActivity.id.desc())
-            .offset(max(0, offset))
-            .limit(max(1, min(limit, 100)))
-        )
-        result = await session.execute(statement)
-        return [_activity_payload(row) for row in result.scalars().all()]
+    rows = await db.list_agent_activities(
+        activity_type=activity_type,
+        user_id=user_id,
+        limit=limit,
+        offset=offset,
+    )
+    return [_activity_payload(row) for row in rows]

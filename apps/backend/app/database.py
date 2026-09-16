@@ -32,6 +32,8 @@ from app.models import (
     ApiKey,
     Application,
     ApplicationEvent,
+    AgentActivity,
+    CareerGap,
     CareerPilotProfile,
     Improvement,
     Job,
@@ -317,6 +319,185 @@ class Database:
             "timestamp": row.timestamp,
             "metadata": row.metadata_json or {},
         }
+
+    @staticmethod
+    def _agent_activity_to_dict(row: AgentActivity) -> dict[str, Any]:
+        return {
+            "id": row.id,
+            "user_id": row.user_id,
+            "activity_type": row.activity_type,
+            "action": row.action,
+            "details": row.details or {},
+            "status": row.status,
+            "created_at": row.created_at,
+        }
+
+    @staticmethod
+    def _career_gap_to_dict(row: CareerGap) -> dict[str, Any]:
+        return {
+            "gap_id": row.gap_id,
+            "profile_id": row.profile_id,
+            "user_id": row.user_id,
+            "job_id": row.job_id,
+            "gap_type": row.gap_type,
+            "name": row.name,
+            "explanation": row.explanation,
+            "recommendation": row.recommendation,
+            "frequency": row.frequency,
+            "priority": row.priority,
+            "created_at": row.created_at,
+            "updated_at": row.updated_at,
+        }
+
+    async def create_agent_activity(
+        self,
+        *,
+        activity_type: str,
+        action: str,
+        details: dict[str, Any] | None = None,
+        user_id: str | None = None,
+        status: str = "success",
+        created_at: str | None = None,
+    ) -> dict[str, Any]:
+        """Persist one agent activity event through the public facade."""
+        timestamp = created_at or _now()
+        async with self._write_session() as session:
+            row = AgentActivity(
+                activity_type=activity_type,
+                action=action,
+                details=copy.deepcopy(details or {}),
+                user_id=user_id,
+                status=status,
+                created_at=timestamp,
+            )
+            session.add(row)
+            await session.commit()
+            await session.refresh(row)
+            return self._agent_activity_to_dict(row)
+
+    async def list_agent_activities(
+        self,
+        *,
+        activity_type: str | None = None,
+        user_id: str | None = None,
+        limit: int = 50,
+        offset: int = 0,
+    ) -> list[dict[str, Any]]:
+        """List agent activities newest-first with stable pagination."""
+        async with self._session() as session:
+            statement = select(AgentActivity)
+            if activity_type:
+                statement = statement.where(AgentActivity.activity_type == activity_type)
+            if user_id:
+                statement = statement.where(AgentActivity.user_id == user_id)
+            result = await session.execute(
+                statement.order_by(
+                    AgentActivity.created_at.desc(), AgentActivity.id.desc()
+                )
+                .offset(max(0, offset))
+                .limit(max(1, min(limit, 100)))
+            )
+            return [self._agent_activity_to_dict(row) for row in result.scalars().all()]
+
+    async def create_career_gap(
+        self,
+        *,
+        gap_type: str,
+        name: str,
+        explanation: str,
+        recommendation: str,
+        frequency: int = 1,
+        profile_id: str | None = None,
+        user_id: str | None = None,
+        job_id: str | None = None,
+        priority: int | None = None,
+        created_at: str | None = None,
+    ) -> dict[str, Any]:
+        """Persist one generated CareerPilot gap."""
+        timestamp = created_at or _now()
+        async with self._write_session() as session:
+            row = CareerGap(
+                gap_id=str(uuid4()),
+                profile_id=profile_id,
+                user_id=user_id,
+                job_id=job_id,
+                gap_type=gap_type,
+                name=name,
+                explanation=explanation,
+                recommendation=recommendation,
+                frequency=frequency,
+                priority=priority,
+                created_at=timestamp,
+                updated_at=timestamp,
+            )
+            session.add(row)
+            await session.commit()
+            return self._career_gap_to_dict(row)
+
+    async def list_career_gaps(
+        self,
+        *,
+        profile_id: str | None = None,
+        user_id: str | None = None,
+        limit: int = 100,
+    ) -> list[dict[str, Any]]:
+        """List generated gaps scoped to a profile or user."""
+        async with self._session() as session:
+            statement = select(CareerGap)
+            if profile_id is not None:
+                statement = statement.where(CareerGap.profile_id == profile_id)
+            if user_id is not None:
+                statement = statement.where(CareerGap.user_id == user_id)
+            result = await session.execute(
+                statement.order_by(CareerGap.frequency.desc(), CareerGap.name).limit(
+                    max(1, min(limit, 500))
+                )
+            )
+            return [self._career_gap_to_dict(row) for row in result.scalars().all()]
+
+    async def get_career_gap(self, gap_id: str) -> dict[str, Any] | None:
+        """Retrieve one generated gap by ID."""
+        async with self._session() as session:
+            row = await session.get(CareerGap, gap_id)
+            return self._career_gap_to_dict(row) if row else None
+
+    async def replace_career_gaps(
+        self,
+        gaps: list[dict[str, Any]],
+        *,
+        profile_id: str | None = None,
+        user_id: str | None = None,
+    ) -> list[dict[str, Any]]:
+        """Replace only generated gaps in the requested profile/user scope."""
+        async with self._write_session() as session:
+            conditions = []
+            if profile_id is not None:
+                conditions.append(CareerGap.profile_id == profile_id)
+            if user_id is not None:
+                conditions.append(CareerGap.user_id == user_id)
+            if not conditions:
+                raise ValueError("A profile_id or user_id is required to replace career gaps")
+            await session.execute(delete(CareerGap).where(and_(*conditions)))
+            rows = [
+                CareerGap(
+                    gap_id=str(uuid4()),
+                    profile_id=profile_id,
+                    user_id=user_id,
+                    job_id=gap.get("job_id"),
+                    gap_type=gap["gap_type"],
+                    name=gap["name"],
+                    explanation=gap["explanation"],
+                    recommendation=gap["recommendation"],
+                    frequency=int(gap.get("frequency", 1)),
+                    priority=gap.get("priority"),
+                    created_at=gap.get("created_at") or _now(),
+                    updated_at=_now(),
+                )
+                for gap in gaps
+            ]
+            session.add_all(rows)
+            await session.commit()
+            return [self._career_gap_to_dict(row) for row in rows]
 
     # -- Resume operations --------------------------------------------------
 
