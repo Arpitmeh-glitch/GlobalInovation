@@ -9,7 +9,15 @@ type Status = (typeof statuses)[number];
 type Application = { application_id: string; job_id: string; status: Status; company?: string | null; role?: string | null; applied_at?: string | null; notes?: string | null; match_score?: number | null };
 type Columns = Record<Status, Application[]>;
 
-const emptyColumns = (): Columns => Object.fromEntries(statuses.map((status) => [status, []])) as Columns;
+const emptyColumns = (): Columns => ({
+  saved: [],
+  applied: [],
+  response: [],
+  interview: [],
+  accepted: [],
+  rejected: [],
+  no_response: [],
+});
 
 export default function CareerPilotApplicationsPage() {
   const [columns, setColumns] = useState<Columns>(emptyColumns);

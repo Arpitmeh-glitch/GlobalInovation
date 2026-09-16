@@ -410,13 +410,6 @@ export default function DashboardPage() {
     return Math.abs(hash);
   };
 
-  const totalCards = 1 + tailoredResumes.length + 1;
-  const fillerCount = Math.max(0, (5 - (totalCards % 5)) % 5);
-  const extraFillerCount = 5;
-  // Use Tailwind classes for fillers now that we have them in config or use specific hex if needed
-  // Using the hex values from before to maintain exact look, or we could map them to variants
-  const fillerPalette = ['bg-secondary', 'bg-[#D8D8D2]', 'bg-[#CFCFC7]', 'bg-[#E0E0D8]'];
-
   const listErrorAlert = listError ? (
     <div
       role="alert"
@@ -669,35 +662,44 @@ export default function DashboardPage() {
         <Card className="aspect-square h-full" variant="default">
           <div className="flex-1 flex flex-col items-center justify-center text-center h-full">
             <Button
-              onClick={() => router.push('/tailor')}
-              disabled={!isTailorEnabled}
-              className="w-20 h-20 bg-blue-700 text-white border-2 border-black shadow-sw-default hover:bg-blue-800 hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all rounded-none"
+              onClick={() => {
+                if (isTailorEnabled) {
+                  router.push('/tailor');
+                } else {
+                  setIsMasterChoiceDialogOpen(true);
+                }
+              }}
+              className="h-20 w-20 rounded-none border-2 border-black bg-blue-700 text-white shadow-sw-default transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-blue-800 hover:shadow-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+              aria-label={isTailorEnabled ? t('dashboard.createResume') : t('dashboard.initializeMasterResume')}
             >
               <Plus className="w-8 h-8" />
             </Button>
             <p className="text-xs font-mono mt-4 uppercase text-green-700">
-              {t('dashboard.createResume')}
+              {isTailorEnabled ? t('dashboard.createResume') : t('dashboard.initializeMasterResume')}
             </p>
           </div>
         </Card>
 
-        {/* 4. Fillers */}
-        {Array.from({ length: fillerCount }).map((_, index) => (
-          <Card
-            key={`filler-${index}`}
-            variant="ghost"
-            noPadding
-            className="hidden md:block bg-canvas aspect-square h-full opacity-50 pointer-events-none"
-          />
-        ))}
-
-        {Array.from({ length: extraFillerCount }).map((_, index) => (
-          <Card
-            key={`extra-filler-${index}`}
-            variant="ghost"
-            noPadding
-            className={`hidden md:block ${fillerPalette[index % fillerPalette.length]} aspect-square h-full opacity-70 pointer-events-none`}
-          />
+        {/* 4. CareerPilot modules */}
+        {[
+          { href: '/careerpilot/jobs', index: '01', title: 'Discover Jobs', detail: 'Find roles and review explainable matches.' },
+          { href: '/gaps', index: '02', title: 'Career Gaps', detail: 'Run an analysis to see missing skills and evidence.' },
+          { href: '/simulator', index: '03', title: 'What-if Simulator', detail: 'Test hypothetical skills without changing your resume.' },
+          { href: '/careerpilot/applications', index: '04', title: 'Applications', detail: 'No applications tracked yet. Start with a job match.' },
+          { href: '/activity', index: '05', title: 'Activity Log', detail: 'Review CareerPilot actions and audit events.' },
+          { href: '/careerpilot/onboarding', index: '06', title: 'Career Profile', detail: 'No profile saved yet. Set your target role and preferences.' },
+          { href: '/demo', index: '07', title: 'Demo Mode', detail: 'Explore deterministic sample data and reset safely.' },
+        ].map((module) => (
+          <Link key={module.href} href={module.href} className="block h-full rounded-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700">
+            <Card variant="interactive" className="h-full min-h-56 bg-white p-5 md:p-6">
+              <div className="flex h-full flex-col">
+                <span className="font-mono text-xs font-bold text-blue-700">{module.index}</span>
+                <CardTitle className="mt-8 text-xl uppercase">{module.title}</CardTitle>
+                <CardDescription className="mt-auto pt-6 text-xs leading-relaxed">{module.detail}</CardDescription>
+                <span className="mt-4 font-mono text-[10px] font-bold uppercase text-blue-700">Open module →</span>
+              </div>
+            </Card>
+          </Link>
         ))}
 
         <ConfirmDialog

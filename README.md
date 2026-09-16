@@ -47,7 +47,7 @@ Resume Matcher works by creating a master resume that you can use to tailor for 
 
 ### CareerPilot
 
-CareerPilot is the profile-aware job workflow layered on top of Resume Matcher. Open `/careerpilot/onboarding` to save a career profile, then use `/careerpilot` for recommendations, `/careerpilot/jobs` for backend-backed discovery and filters, and `/careerpilot/jobs/{id}` for evidence-based match analysis. Application drafts are prepared at `/careerpilot/applications/{jobId}`, reviewed at `/careerpilot/applications/{applicationId}/review`, and tracked at `/careerpilot/applications`.
+CareerPilot is the profile-aware job workflow layered on top of Resume Matcher. Open `/careerpilot/onboarding` to save a career profile, then use `/careerpilot` for recommendations, `/careerpilot/jobs` for backend-backed discovery and filters, and `/careerpilot/jobs/{id}` for evidence-based match analysis. Application drafts are prepared at `/careerpilot/applications/prepare/{jobId}`, reviewed at `/careerpilot/applications/{applicationId}/review`, and tracked at `/careerpilot/applications`.
 
 The default `DemoProvider` supplies deterministic sample jobs. New providers implement `JobProvider` in `apps/backend/app/job_providers/base.py`, register through `apps/backend/app/job_providers/registry.py`, and return the normalized job shape expected by `JobDiscoveryService`. Provider integrations must use permitted APIs; CareerPilot does not scrape or automatically submit to external sites.
 
