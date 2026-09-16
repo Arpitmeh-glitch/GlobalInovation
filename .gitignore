@@ -77,7 +77,8 @@ yarn-error.log*
 .vscode/
 .claude/*
 !.claude/CLAUDE.md
-!.claude/settings.json
+/.impeccable.md
+/docs/superpowers/
 .agents/
 .kilocode/
 .gemini/
