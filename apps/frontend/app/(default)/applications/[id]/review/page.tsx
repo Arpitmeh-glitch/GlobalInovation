@@ -194,6 +194,17 @@ export default function CareerPilotApplicationReviewPage() {
 
         <Card className="border border-black bg-white shadow-sw-md">
           <CardHeader>
+            <CardTitle>Submission control</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm">
+            <p>CareerPilot prepares materials only. Final submission happens on the external job site.</p>
+            <p className="font-mono text-xs uppercase text-ink-soft">Source resume: {application.original_resume_id} · Provider: {application.provider ?? 'Unavailable'}</p>
+            {application.application_url ? <a href={application.application_url} target="_blank" rel="noreferrer" className="inline-flex border border-black bg-blue-700 px-3 py-2 font-mono text-xs font-bold uppercase text-white shadow-sw-sm">Open external application</a> : <p className="text-ink-soft">No external application URL was supplied by this provider.</p>}
+          </CardContent>
+        </Card>
+
+        <Card className="border border-black bg-white shadow-sw-md">
+          <CardHeader>
             <CardTitle>Tailored Resume</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">

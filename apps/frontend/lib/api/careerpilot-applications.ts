@@ -21,6 +21,8 @@ export interface CareerPilotApplication {
   tracker_status: string;
   company?: string | null;
   role?: string | null;
+  application_url?: string | null;
+  provider?: string | null;
   match: {
     overall_score?: number;
     recommendation?: string;

@@ -42,6 +42,10 @@ export interface CareerPilotJob {
 export interface CareerPilotMatchResult {
   overall_score: number;
   recommendation: string;
+  matched_skills: string[];
+  missing_skills: string[];
+  experience_match: boolean | null;
+  education_match: boolean | null;
   matched_requirements: string[];
   partially_matched_requirements: string[];
   missing_requirements: string[];
@@ -55,13 +59,47 @@ export interface CareerPilotMatchResult {
   score_breakdown: Record<string, number>;
 }
 
+export interface CareerPilotDiscoveryResponse {
+  jobs: CareerPilotJob[];
+  total: number;
+  offset: number;
+  limit: number | null;
+  has_more: boolean;
+  demo_mode: boolean;
+}
+
+function discoveryQuery(criteria: CareerPilotDiscoveryCriteria): string {
+  const params = new URLSearchParams();
+  Object.entries(criteria).forEach(([key, value]) => {
+    if (value === undefined || value === '') return;
+    params.set(key, Array.isArray(value) ? value.join(',') : String(value));
+  });
+  const query = params.toString();
+  return query ? `?${query}` : '';
+}
+
 export async function fetchCareerPilotJobs(): Promise<CareerPilotJob[]> {
   const response = await apiFetch('/careerpilot/jobs', { credentials: 'include' });
   if (!response.ok) {
     throw new Error('Unable to load recommended jobs.');
   }
   const payload = await response.json();
-  return payload.jobs ?? [];
+  if (!payload || !Array.isArray(payload.jobs)) throw new Error('Malformed jobs response.');
+  return payload.jobs;
+}
+
+export async function fetchCareerPilotJobsPage(
+  criteria: CareerPilotDiscoveryCriteria = {}
+): Promise<CareerPilotDiscoveryResponse> {
+  const response = await apiFetch(`/careerpilot/jobs${discoveryQuery(criteria)}`, {
+    credentials: 'include',
+  });
+  if (!response.ok) throw new Error('Unable to load recommended jobs.');
+  const payload = await response.json();
+  if (!payload || !Array.isArray(payload.jobs) || typeof payload.total !== 'number') {
+    throw new Error('Malformed jobs response.');
+  }
+  return payload;
 }
 
 export async function fetchCareerPilotProfile(): Promise<CareerPilotProfile | null> {
@@ -87,6 +125,14 @@ export interface CareerPilotDiscoveryCriteria {
   work_mode?: string;
   employment_type?: string;
   keywords?: string[];
+  min_salary?: number;
+  max_salary?: number;
+  min_experience?: number;
+  max_experience?: number;
+  sort_by?: string;
+  sort_order?: 'asc' | 'desc' | string;
+  offset?: number;
+  limit?: number;
 }
 
 export async function discoverCareerPilotJobs(
@@ -100,7 +146,23 @@ export async function discoverCareerPilotJobs(
     throw new Error('Error discovering jobs');
   }
   const payload = await response.json();
-  return payload.jobs ?? [];
+  if (!payload || !Array.isArray(payload.jobs)) throw new Error('Malformed jobs response.');
+  return payload.jobs;
+}
+
+export async function discoverCareerPilotJobsPage(
+  criteria: CareerPilotDiscoveryCriteria = {}
+): Promise<CareerPilotDiscoveryResponse> {
+  const response = await apiPost('/careerpilot/jobs/discover', {
+    criteria,
+    persist: true,
+  });
+  if (!response.ok) throw new Error('Error discovering jobs');
+  const payload = await response.json();
+  if (!payload || !Array.isArray(payload.jobs) || typeof payload.total !== 'number') {
+    throw new Error('Malformed jobs response.');
+  }
+  return payload;
 }
 
 export async function fetchCareerPilotJob(jobId: string): Promise<CareerPilotJob> {
@@ -111,6 +173,9 @@ export async function fetchCareerPilotJob(jobId: string): Promise<CareerPilotJob
     throw new Error('Unable to load job details.');
   }
   const payload = await response.json();
+  if (!payload || !payload.job || typeof payload.job.id !== 'string') {
+    throw new Error('Malformed job response.');
+  }
   return payload.job;
 }
 
@@ -124,5 +189,8 @@ export async function fetchCareerPilotMatch(jobId: string): Promise<CareerPilotM
     throw new Error(detail ?? 'Unable to load job match.');
   }
   const payload = await response.json();
+  if (!payload || !payload.match || typeof payload.match.overall_score !== 'number') {
+    throw new Error('Malformed match response.');
+  }
   return payload.match;
 }

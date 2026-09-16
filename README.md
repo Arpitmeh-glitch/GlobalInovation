@@ -51,7 +51,9 @@ CareerPilot is the profile-aware job workflow layered on top of Resume Matcher. 
 
 The default `DemoProvider` supplies deterministic sample jobs. New providers implement `JobProvider` in `apps/backend/app/job_providers/base.py`, register through `apps/backend/app/job_providers/registry.py`, and return the normalized job shape expected by `JobDiscoveryService`. Provider integrations must use permitted APIs; CareerPilot does not scrape or automatically submit to external sites.
 
-The backend API is served under `/api/v1` and includes `GET/PUT /careerpilot/profile`, `GET /careerpilot/jobs`, `POST /careerpilot/jobs/discover`, `GET /careerpilot/jobs/{job_id}`, `GET /careerpilot/jobs/{job_id}/match`, and the application preparation, review, screening, cover-letter, approval, rejection, and event endpoints under `/careerpilot/applications`.
+The backend API is served under `/api/v1` and includes `GET/PUT /careerpilot/profile`, `GET /careerpilot/jobs`, `POST /careerpilot/jobs/discover`, `GET /careerpilot/jobs/{job_id}`, `GET /careerpilot/jobs/{job_id}/match`, and the application preparation, review, screening, cover-letter, approval, rejection, and event endpoints under `/careerpilot/applications`. Discovery supports role, location, work mode, employment type, salary, experience, sorting, and offset/limit pagination; responses include `total`, `offset`, `limit`, and `has_more`.
+
+Match responses include the overall score, matched and missing skills, experience and education compatibility, evidence, and score breakdown. Review pages expose the provider URL but never submit externally. The CareerPilot profile is currently stored as the local default profile because this self-hosted app has no authentication layer; add authentication before using it for multiple users.
 
 Run the backend from `apps/backend` with `python -m app.main` and the frontend from `apps/frontend` with `npm run dev`. Install each app's declared dependencies first. Backend tests run with `pytest`; frontend tests run with `npm test`, and type/lint checks use `npm run typecheck` and `npm run lint`.
 

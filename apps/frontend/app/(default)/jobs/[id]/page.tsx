@@ -154,6 +154,10 @@ export default function JobAnalysisPage() {
                   <p className="mt-2 text-sm font-medium">{job.employment_type ?? 'full-time'}</p>
                 </div>
                 <div className="border border-black bg-background p-3">
+                  <p className="font-mono uppercase tracking-wider text-ink-soft">Experience</p>
+                  <p className="mt-2 text-sm font-medium">{job.experience_required ?? 'Not specified'}</p>
+                </div>
+                <div className="border border-black bg-background p-3">
                   <p className="font-mono uppercase tracking-wider text-ink-soft">Salary</p>
                   <p className="mt-2 text-sm font-medium">
                     {job.salary_min
@@ -194,6 +198,9 @@ export default function JobAnalysisPage() {
                 </div>
               ) : null}
               {job.application_url ? <a href={job.application_url} target="_blank" rel="noreferrer" className="inline-flex border border-black bg-background px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-wider shadow-sw-sm">Open provider listing</a> : null}
+              <p className="font-mono text-[10px] uppercase tracking-wider text-ink-soft">Source: {job.provider ?? 'Unavailable'}</p>
+              {job.qualifications?.length ? <div><p className="font-mono text-[10px] uppercase tracking-wider text-ink-soft">Qualifications</p><ul className="mt-2 list-disc space-y-1 pl-5 text-sm">{job.qualifications.map((qualification) => <li key={qualification}>{qualification}</li>)}</ul></div> : null}
+              {job.hard_requirements?.length ? <div><p className="font-mono text-[10px] uppercase tracking-wider text-ink-soft">Required conditions</p><ul className="mt-2 list-disc space-y-1 pl-5 text-sm">{job.hard_requirements.map((requirement) => <li key={requirement}>{requirement}</li>)}</ul></div> : null}
             </CardContent>
           </Card>
 
@@ -214,6 +221,14 @@ export default function JobAnalysisPage() {
                 </p>
               </div>
               <div className="space-y-2">
+                <div className="border border-black bg-background p-3">
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-ink-soft">Experience match</p>
+                  <p className="mt-1 text-sm">{match?.experience_match == null ? 'Not specified' : match.experience_match ? 'Meets available experience evidence' : 'Does not meet available experience evidence'}</p>
+                </div>
+                <div className="border border-black bg-background p-3">
+                  <p className="font-mono text-[10px] uppercase tracking-wider text-ink-soft">Education match</p>
+                  <p className="mt-1 text-sm">{match?.education_match == null ? 'No education requirement detected' : match.education_match ? 'Supported by education evidence' : 'Education evidence is missing'}</p>
+                </div>
                 <div className="border border-black bg-background p-3">
                   <p className="font-mono text-[10px] uppercase tracking-wider text-ink-soft">Matching skills</p>
                   <p className="mt-1 text-sm">{match?.matched_requirements?.join(', ') || 'No direct matches recorded'}</p>

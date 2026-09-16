@@ -9,6 +9,7 @@ from app.matching.resume_context import (
     NO_RESUME_MESSAGE,
     get_matching_resume,
 )
+from app.schemas.careerpilot import CareerPilotDiscoveryRequest
 import app.database as database_module
 import app.job_discovery.service as discovery_service
 
@@ -34,6 +35,27 @@ def test_job_discovery_service_deduplicates_jobs() -> None:
     jobs = service.discover_jobs({})
     assert jobs
     assert len({job["id"] for job in jobs}) == len(jobs)
+
+
+def test_job_discovery_filters_sorts_and_paginates() -> None:
+    service = JobDiscoveryService(providers=[DemoProvider()])
+    jobs = service.discover_jobs({"min_salary": 800000, "work_mode": "remote"})
+    page, total, offset, limit, has_more = service.paginate_jobs(
+        jobs, {"sort_by": "salary", "sort_order": "desc", "offset": 1, "limit": 2}
+    )
+    assert total == len(jobs)
+    assert offset == 1
+    assert limit == 2
+    assert len(page) == 2
+    assert page[0]["salary_max"] >= page[1]["salary_max"]
+    assert has_more is (total > 3)
+
+
+def test_discovery_request_rejects_invalid_pagination_and_salary() -> None:
+    with pytest.raises(ValueError):
+        CareerPilotDiscoveryRequest(criteria={"limit": 0})
+    with pytest.raises(ValueError):
+        CareerPilotDiscoveryRequest(criteria={"min_salary": -1})
 
 
 @pytest.mark.asyncio
@@ -136,6 +158,25 @@ def test_structured_resume_fields_and_case_insensitive_skills_are_supported() ->
     )
     assert "Python" in result["matched_requirements"]
     assert result["hard_requirement_failures"] == []
+
+
+def test_matching_returns_explicit_skill_experience_and_education_results() -> None:
+    result = JobMatchingEngine().match_resume_to_job(
+        {
+            "skills": ["Python"],
+            "experience": [{"years": "2 years"}],
+            "education": [{"degree": "Bachelor of Computer Science"}],
+        },
+        {
+            "skills_required": ["Python", "AWS"],
+            "qualifications": ["Bachelor degree"],
+            "experience_required": "1-3 years",
+        },
+    )
+    assert result["matched_skills"] == ["Python"]
+    assert result["missing_skills"] == ["AWS"]
+    assert result["experience_match"] is True
+    assert result["education_match"] is True
 
 
 @pytest.mark.asyncio

@@ -7,8 +7,8 @@ import Search from 'lucide-react/dist/esm/icons/search';
 import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-  discoverCareerPilotJobs,
-  fetchCareerPilotJobs,
+  discoverCareerPilotJobsPage,
+  fetchCareerPilotJobsPage,
   type CareerPilotJob,
 } from '@/lib/api/careerpilot';
 
@@ -21,12 +21,36 @@ export default function RecommendedJobsPage() {
   const [location, setLocation] = useState('');
   const [workMode, setWorkMode] = useState('');
   const [employmentType, setEmploymentType] = useState('');
+  const [sortBy, setSortBy] = useState('match_score');
+  const [sortOrder, setSortOrder] = useState('desc');
+  const [offset, setOffset] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [minSalary, setMinSalary] = useState('');
+  const [maxSalary, setMaxSalary] = useState('');
+  const [minExperience, setMinExperience] = useState('');
+  const [maxExperience, setMaxExperience] = useState('');
+  const pageSize = 6;
 
   async function loadJobs() {
     setLoading(true);
     setError(null);
     try {
-      setJobs(await fetchCareerPilotJobs());
+      const result = await fetchCareerPilotJobsPage({
+        role: role.trim() || undefined,
+        location: location.trim() || undefined,
+        work_mode: workMode || undefined,
+        employment_type: employmentType || undefined,
+        min_salary: minSalary ? Number(minSalary) : undefined,
+        max_salary: maxSalary ? Number(maxSalary) : undefined,
+        min_experience: minExperience ? Number(minExperience) : undefined,
+        max_experience: maxExperience ? Number(maxExperience) : undefined,
+        sort_by: sortBy,
+        sort_order: sortOrder,
+        offset,
+        limit: pageSize,
+      });
+      setJobs(result.jobs);
+      setTotal(result.total);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unable to load recommended jobs.');
     } finally {
@@ -38,12 +62,23 @@ export default function RecommendedJobsPage() {
     setDiscovering(true);
     setError(null);
     try {
-      setJobs(await discoverCareerPilotJobs({
+      const result = await discoverCareerPilotJobsPage({
         role: role.trim() || undefined,
         location: location.trim() || undefined,
         work_mode: workMode || undefined,
         employment_type: employmentType || undefined,
-      }));
+        min_salary: minSalary ? Number(minSalary) : undefined,
+        max_salary: maxSalary ? Number(maxSalary) : undefined,
+        min_experience: minExperience ? Number(minExperience) : undefined,
+        max_experience: maxExperience ? Number(maxExperience) : undefined,
+        sort_by: sortBy,
+        sort_order: sortOrder,
+        offset: 0,
+        limit: pageSize,
+      });
+      setJobs(result.jobs);
+      setTotal(result.total);
+      setOffset(0);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error discovering jobs');
     } finally {
@@ -53,7 +88,7 @@ export default function RecommendedJobsPage() {
 
   useEffect(() => {
     void loadJobs();
-  }, []);
+  }, [offset, sortBy, sortOrder]);
 
   return (
     <main className="min-h-screen bg-background p-4 md:p-8">
@@ -118,6 +153,17 @@ export default function RecommendedJobsPage() {
           <select value={employmentType} onChange={(event) => setEmploymentType(event.target.value)} aria-label="Employment type" className="border border-black bg-background px-3 py-2 text-sm">
             <option value="">Any employment type</option><option value="full_time">Full-time</option><option value="internship">Internship</option><option value="contract">Contract</option>
           </select>
+          <input type="number" min="0" value={minSalary} onChange={(event) => setMinSalary(event.target.value)} placeholder="Minimum salary" aria-label="Minimum salary" className="border border-black bg-background px-3 py-2 text-sm" />
+          <input type="number" min="0" value={maxSalary} onChange={(event) => setMaxSalary(event.target.value)} placeholder="Maximum salary" aria-label="Maximum salary" className="border border-black bg-background px-3 py-2 text-sm" />
+          <input type="number" min="0" value={minExperience} onChange={(event) => setMinExperience(event.target.value)} placeholder="Minimum years" aria-label="Minimum experience" className="border border-black bg-background px-3 py-2 text-sm" />
+          <input type="number" min="0" value={maxExperience} onChange={(event) => setMaxExperience(event.target.value)} placeholder="Maximum years" aria-label="Maximum experience" className="border border-black bg-background px-3 py-2 text-sm" />
+          <select value={sortBy} onChange={(event) => { setSortBy(event.target.value); setOffset(0); }} aria-label="Sort jobs" className="border border-black bg-background px-3 py-2 text-sm">
+            <option value="match_score">Best match</option><option value="salary">Salary</option><option value="posted_at">Newest</option><option value="title">Title</option>
+          </select>
+          <select value={sortOrder} onChange={(event) => { setSortOrder(event.target.value); setOffset(0); }} aria-label="Sort order" className="border border-black bg-background px-3 py-2 text-sm">
+            <option value="desc">Descending</option><option value="asc">Ascending</option>
+          </select>
+          <button type="submit" className="border border-black bg-blue-700 px-3 py-2 font-mono text-xs font-bold uppercase text-white">Apply filters</button>
         </form>
 
         {loading ? (
@@ -198,6 +244,13 @@ export default function RecommendedJobsPage() {
             ))}
           </div>
         )}
+        {!loading && !error && total > pageSize ? (
+          <div className="mt-6 flex items-center justify-between border-t border-black pt-4">
+            <button type="button" disabled={offset === 0} onClick={() => setOffset(Math.max(0, offset - pageSize))} className="border border-black bg-background px-3 py-2 font-mono text-xs uppercase disabled:opacity-40">Previous</button>
+            <span className="font-mono text-xs uppercase">Showing {offset + 1}-{Math.min(offset + pageSize, total)} of {total}</span>
+            <button type="button" disabled={offset + pageSize >= total} onClick={() => setOffset(offset + pageSize)} className="border border-black bg-background px-3 py-2 font-mono text-xs uppercase disabled:opacity-40">Next</button>
+          </div>
+        ) : null}
       </div>
     </main>
   );
