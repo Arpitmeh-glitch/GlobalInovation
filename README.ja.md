@@ -63,7 +63,7 @@ Resume Matcher をご覧いただきありがとうございます。つなが�
 
 - Website: [https://arpitmehrotra.vercel.app/](https://arpitmehrotra.vercel.app/)
 - Linkedin: [https://www.linkedin.com/in/arpitmehrotra-dev/](https://www.linkedin.com/in/arpitmehrotra-dev/)
-- GitHub: [https://github.com/Arpitmeh-glitch](https://github.com/Arpitmeh-glitch)
+- GitHub: [https://github.com/Arpitmeh-glitch/GlobalInovation](https://github.com/Arpitmeh-glitch/GlobalInovation)
 
 ## 主な機能
 
