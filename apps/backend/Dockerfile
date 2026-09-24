@@ -4,7 +4,8 @@ ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    HOST=0.0.0.0
+    HOST=0.0.0.0 \
+    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
 # Runtime libraries required by Playwright Chromium and PDF render
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -35,9 +36,9 @@ WORKDIR /app
 COPY pyproject.toml ./
 COPY app ./app
 
-RUN pip install . \
+RUN mkdir -p /app/data /ms-playwright \
+    && pip install . \
     && python -m playwright install chromium \
-    && mkdir -p /app/data \
     && useradd -m -u 1000 appuser \
     && chown -R appuser:appuser /app /ms-playwright
 
