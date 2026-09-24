@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     HOST=0.0.0.0
 
-# Runtime libraries required by Playwright Chromium and PDF rendering.
+# Runtime libraries required by Playwright Chromium and PDF render
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
