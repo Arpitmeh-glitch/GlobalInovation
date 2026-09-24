@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 
 const BACKEND_ORIGIN = process.env.BACKEND_ORIGIN || 'http://127.0.0.1:8000';
+const isVercelBuild = process.env.VERCEL === '1';
 
 // Request timeout (ms) for the API proxy. MUST match the backend's
 // REQUEST_TIMEOUT_SECONDS and the client AbortController (lib/api/client.ts) —
@@ -13,7 +14,10 @@ const REQUEST_TIMEOUT_MS = Number.isFinite(parsedTimeoutMs)
   : 240_000;
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  // Vercel manages the Next.js server bundle and tracing itself. Standalone
+  // output remains enabled for the repository Docker image, which copies
+  // `.next/standalone` into its runtime image.
+  ...(isVercelBuild ? {} : { output: 'standalone' as const }),
   experimental: {
     proxyTimeout: REQUEST_TIMEOUT_MS,
     // Tree-shake barrel imports — saves ~200-800ms cold start per route

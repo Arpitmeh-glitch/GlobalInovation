@@ -8,7 +8,8 @@
 
 ## Route / Page Map
 
-App Router under `app/`. A `(default)` route group wraps the main app in providers; `print/*` is provider-free (server-rendered for headless-Chromium PDF capture).
+App Router under `app/`. A `(default)` route group wraps the main app in providers; `print/*` is provider-free (server-rendered for headless-Chromium PDF capture). 
+
 
 | Route | File | Type | Purpose |
 |-------|------|------|---------|
