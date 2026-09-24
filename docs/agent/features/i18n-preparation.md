@@ -1,6 +1,6 @@
 # i18n Preparation Guide
 
-> Plan for internationalizing Resume Matcher.
+> Plan for internationalizing CareerPilot.
 
 ## Current State
 

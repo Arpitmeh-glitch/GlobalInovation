@@ -1,8 +1,8 @@
-# Resume Matcher — Agent Documentation Index
+# CareerPilot — Agent Documentation Index
 
-> Project-specific reference for agents working in the Resume Matcher codebase.
+> Project-specific reference for agents working in the CareerPilot codebase.
 
-Generic, reusable guides (Swiss design system, Next.js performance) live in [`../portable/`](../portable/README.md) as standalone packs that can be lifted out of this repo and dropped into any project. This index covers only the docs that are tied to Resume Matcher itself.
+Generic, reusable guides (Swiss design system, Next.js performance) live in [`../portable/`](../portable/README.md) as standalone packs that can be lifted out of this repo and dropped into any project. This index covers only the docs that are tied to CareerPilot itself.
 
 ## Quick Navigation
 
@@ -38,7 +38,7 @@ See the [hosted review corrections](architecture/hosted-review-corrections.md) f
 | [api-flow-maps](apis/api-flow-maps.md)               | Request/response flows          |
 | [backend-requirements](apis/backend-requirements.md) | Backend behavioral requirements |
 
-### Design (Resume Matcher specifics)
+### Design (CareerPilot specifics)
 
 | Doc                                                                          | Purpose                           |
 | ---------------------------------------------------------------------------- | --------------------------------- |

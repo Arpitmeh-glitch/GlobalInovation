@@ -80,7 +80,7 @@ export function ApplicationCard({
             )}
             {application.match_score !== null && application.match_score !== undefined && (
               <p className="mt-1 font-mono text-[10px] uppercase tracking-wide text-blue-700">
-                Match {application.match_score}% · {application.source ?? 'Resume Matcher'}
+                Match {application.match_score}% · {application.source ?? 'CareerPilot'}
               </p>
             )}
           </button>

@@ -1,8 +1,8 @@
 <div align="center">
 
-[![Resume Matcher](assets/header.png)](https://www.resumematcher.fyi)
+[![CareerPilot](assets/header.png)](https://www.resumematcher.fyi)
 
-# Resume Matcher
+# CareerPilot
 
 [𝙹𝚘𝚒𝚗 𝙳𝚒𝚜𝚌𝚘𝚛𝚍](https://dsc.gg/resume-matcher) ✦ [𝚆𝚎𝚋𝚜𝚒𝚝𝚎](https://resumematcher.fyi) ✦ [𝙷𝚘𝚠 𝚝𝚘 𝙸𝚗𝚜𝚝𝚊𝚕𝚕](https://resumematcher.fyi/docs/installation) ✦ [𝙲𝚘𝚗𝚝𝚛𝚒𝚋𝚞𝚝𝚘𝚛𝚜](#contributors) ✦ [𝚂𝚙𝚘𝚗𝚜𝚘𝚛](#sponsors) ✦ [𝚃𝚠𝚒𝚝𝚝𝚎𝚛/𝚇](https://twitter.com/srbhrai) ✦ [𝙻𝚒𝚗𝚔𝚎𝚍𝙸𝚗](https://www.linkedin.com/company/resume-matcher/) ✦ [𝙲𝚛𝚎𝚊𝚝𝚘𝚛](https://srbhr.com)
 
@@ -10,7 +10,7 @@
 
 The AI harness to build tailored resumes for each job application with Claude, ChatGPT, DeepSeek, Kimi, GLM, Gemma, and other LLMs. Supports both local and remote LLMs.
 
-![Resume Matcher Demo](assets/Resume_Matcher_Demo_2.gif)
+![CareerPilot Demo](assets/Resume_Matcher_Demo_2.gif)
 
 </div>
 
@@ -31,7 +31,7 @@ The AI harness to build tailored resumes for each job application with Claude, C
 
 > \[!IMPORTANT]
 >
-> The project needs your help and support. If you can donate a small amount, that will help me to continue developing and improving Resume Matcher.
+> The project needs your help and support. If you can donate a small amount, that will help me to continue developing and improving CareerPilot.
 
 <div align="center">
 
@@ -43,11 +43,11 @@ The AI harness to build tailored resumes for each job application with Claude, C
 
 ## Getting Started
 
-Resume Matcher works by creating a master resume that you can use to tailor for each job application. Installation instructions here: [How to Install](#how-to-install)
+CareerPilot works by creating a master resume that you can use to tailor for each job application. Installation instructions here: [How to Install](#how-to-install)
 
 ### CareerPilot
 
-CareerPilot is the profile-aware job workflow layered on top of Resume Matcher. Open `/careerpilot/onboarding` to save a career profile, then use `/careerpilot` for recommendations, `/careerpilot/jobs` for backend-backed discovery and filters, and `/careerpilot/jobs/{id}` for evidence-based match analysis. Application drafts are prepared at `/careerpilot/applications/prepare/{jobId}`, reviewed at `/careerpilot/applications/{applicationId}/review`, and tracked at `/careerpilot/applications`.
+CareerPilot is the profile-aware job workflow for recommendations, evidence-backed matching, resume tailoring, and application tracking. Open `/careerpilot/onboarding` to save a career profile, then use `/careerpilot` for recommendations, `/careerpilot/jobs` for discovery and filters, and `/careerpilot/jobs/{id}` for match analysis. Application drafts are prepared at `/careerpilot/applications/prepare/{jobId}`, reviewed at `/careerpilot/applications/{applicationId}/review`, and tracked at `/careerpilot/applications`.
 
 The default `DemoProvider` supplies deterministic sample jobs. New providers implement `JobProvider` in `apps/backend/app/job_providers/base.py`, register through `apps/backend/app/job_providers/registry.py`, and return the normalized job shape expected by `JobDiscoveryService`. Provider integrations must use permitted APIs; CareerPilot does not scrape or automatically submit to external sites.
 
@@ -76,7 +76,7 @@ Join our [Discord](https://dsc.gg/resume-matcher) for discussions, feature reque
 
 Follow us on [LinkedIn](https://www.linkedin.com/company/resume-matcher/) for updates.
 
-![Star Resume Matcher](assets/star_resume_matcher.png)
+![Star CareerPilot](assets/star_resume_matcher.png)
 
 Star the repo to support development and get notified of new releases.
 
@@ -84,18 +84,18 @@ Star the repo to support development and get notified of new releases.
 
 ![sponsors](assets/sponsors.png)
 
-Resume Matcher is free and open-source, kept alive by its sponsors and backers. If it helps you, please consider supporting its development.
+CareerPilot is free and open-source, kept alive by its sponsors and backers. If it helps you, please consider supporting its development.
 
-### Companies backing Resume Matcher
+### Companies backing CareerPilot
 
 Sponsor at a company tier and **your logo + link + blurb lands here** — in front of a community of **27k+ stars and 4.9k forks**, featured on [Trendshift](https://trendshift.io/repositories/565) and the [Vercel OSS Program](https://vercel.com/oss).
 
 | Sponsor | Description |
 |---------|-------------|
 | [Apideck](https://apideck.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | One API to connect your app to 200+ SaaS platforms (accounting, HRIS, CRM, file storage). Build integrations once, not 50 times. 🌐 [apideck.com](https://apideck.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Vercel](https://vercel.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Resume Matcher is a part of Vercel OSS // Summer 2025 Program 🌐 [vercel.com](https://vercel.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Cubic.dev](https://cubic.dev?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Cubic provides PR reviews for Resume Matcher 🌐 [cubic.dev](https://cubic.dev?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Kilo Code](https://kilo.ai?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Kilo Code provides AI code reviews and coding credits to Resume Matcher 🌐 [kilo.ai](https://kilo.ai?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
+| [Vercel](https://vercel.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | CareerPilot is a part of Vercel OSS // Summer 2025 Program 🌐 [vercel.com](https://vercel.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
+| [Cubic.dev](https://cubic.dev?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Cubic provides PR reviews for CareerPilot 🌐 [cubic.dev](https://cubic.dev?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
+| [Kilo Code](https://kilo.ai?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Kilo Code provides AI code reviews and coding credits to CareerPilot 🌐 [kilo.ai](https://kilo.ai?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
 | [ZanReal](https://zanreal.com/?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | ZanReal is an AI-driven development company building scalable cloud solutions, from strategy and UX to DevOps, helping teams ship faster and turn ideas into production. 🌐 [zanreal.com](https://zanreal.com/?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
 | **✦ Your company here** | Reach 27k+ developers and 4.9k forks. **[Become a sponsor →](https://github.com/sponsors/srbhr)** |
 
@@ -107,7 +107,7 @@ Read the [Sponsorship Guide](https://resumematcher.fyi/docs/sponsoring) for tier
 
 ![donate](assets/supporting_resume_matcher.png)
 
-Every bit keeps Resume Matcher free and funds new features — and you'll be thanked in the README and on our website.
+Every bit keeps CareerPilot free and funds new features — and you'll be thanked in the README and on our website.
 
 | Platform  | Link                                   |
 |-----------|----------------------------------------|
@@ -118,7 +118,7 @@ Every bit keeps Resume Matcher free and funds new features — and you'll be tha
 
 [![srbhr](assets/creators_note.png)](https://srbhr.com)
 
-Thank you for checking out Resume Matcher. If you want to connect, collaborate, or just say hi, feel free to reach out!
+Thank you for checking out CareerPilot. If you want to connect, collaborate, or just say hi, feel free to reach out!
 ~ **Saurabh Rai** ✨
 
 You can follow me on:
@@ -308,6 +308,6 @@ Check out the roadmap if you would like to work on the features that are planned
   </picture>
 </details>
 
-## Resume Matcher is a part of [Vercel Open Source Program](https://vercel.com/oss)
+## CareerPilot is a part of [Vercel Open Source Program](https://vercel.com/oss)
 
 ![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)

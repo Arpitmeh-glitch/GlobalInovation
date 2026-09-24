@@ -1,6 +1,6 @@
 # Quickstart Guide
 
-> Essential commands to build, run, and test Resume Matcher.
+> Essential commands to build, run, and test CareerPilot.
 
 ## Prerequisites
 

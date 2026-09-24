@@ -1,6 +1,6 @@
 # Frontend Workflow
 
-> User flows and state management for Resume Matcher.
+> User flows and state management for CareerPilot.
 
 ## Core User Flow
 

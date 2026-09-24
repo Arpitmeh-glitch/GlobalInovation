@@ -1,8 +1,8 @@
-# Resume Matcher Setup Guide
+# CareerPilot Setup Guide
 
 [**English**](SETUP.md) | [Español](SETUP.es.md) | [简体中文](SETUP.zh-CN.md) | [日本語](SETUP.ja.md)
 
-Welcome! This guide will walk you through setting up Resume Matcher on your local machine. Whether you're a developer looking to contribute or someone who wants to run the application locally, this guide has you covered.
+Welcome! This guide will walk you through setting up CareerPilot on your local machine. Whether you're a developer looking to contribute or someone who wants to run the application locally, this guide has you covered.
 
 ---
 
@@ -40,7 +40,7 @@ Before you begin, make sure you have the following installed on your system:
 
 ### Installing uv (Python Package Manager)
 
-Resume Matcher uses `uv` for fast, reliable Python dependency management. Install it with:
+CareerPilot uses `uv` for fast, reliable Python dependency management. Install it with:
 
 ```bash
 # macOS/Linux
@@ -193,13 +193,13 @@ You should see:
 - Local:        http://localhost:3000
 ```
 
-Open **<http://localhost:3000>** in your browser. You should see the Resume Matcher dashboard!
+Open **<http://localhost:3000>** in your browser. You should see the CareerPilot dashboard!
 
 ---
 
 ## Configuring Your AI Provider
 
-Resume Matcher supports multiple AI providers. You can configure your provider through the Settings page in the app, or by editing the backend `.env` file.
+CareerPilot supports multiple AI providers. You can configure your provider through the Settings page in the app, or by editing the backend `.env` file.
 
 ### Option A: Cloud Providers
 
@@ -260,7 +260,7 @@ Ollama typically starts automatically after installation.
 
 ## Docker Deployment
 
-Prefer containerized deployment? Resume Matcher includes Docker support.
+Prefer containerized deployment? CareerPilot includes Docker support.
 
 ### Quick Start with Docker Compose
 
@@ -432,7 +432,7 @@ npm run dev -- -p 3001
 
 ### Database Management
 
-Resume Matcher uses TinyDB (JSON file storage). All data is in `apps/backend/data/`:
+CareerPilot uses TinyDB (JSON file storage). All data is in `apps/backend/data/`:
 
 ```bash
 # View database files
@@ -587,4 +587,4 @@ Stuck? Here are your options:
 
 ---
 
-Happy resume building! If you find Resume Matcher helpful, consider [starring the repo](https://github.com/srbhr/Resume-Matcher) and [joining our Discord](https://dsc.gg/resume-matcher).
+Happy resume building! If you find CareerPilot helpful, consider [starring the repo](https://github.com/srbhr/Resume-Matcher) and [joining our Discord](https://dsc.gg/resume-matcher).

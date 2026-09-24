@@ -1,6 +1,6 @@
 # API Flow Maps
 
-> Request/response flows for all Resume Matcher endpoints.
+> Request/response flows for all CareerPilot endpoints.
 
 ## Resume Upload
 

@@ -1,6 +1,6 @@
 # Backend API Requirements
 
-> API contract specifications for Resume Matcher.
+> API contract specifications for CareerPilot.
 
 ## Base URL
 

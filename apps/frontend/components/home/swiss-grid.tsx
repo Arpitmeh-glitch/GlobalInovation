@@ -12,7 +12,7 @@ export const SwissGrid = ({ children }: { children: React.ReactNode }) => {
   return (
     // 1. Outer Wrapper: Fixed height with grid background
     <div
-      className="h-screen w-full flex justify-center items-start py-12 px-4 md:px-8 overflow-hidden bg-background"
+      className="min-h-[calc(100vh-3.5rem)] w-full flex justify-center items-start py-5 px-4 md:py-8 md:px-8 overflow-hidden bg-background"
       style={{
         backgroundImage:
           'linear-gradient(rgba(29, 78, 216, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(29, 78, 216, 0.1) 1px, transparent 1px)',
@@ -47,14 +47,8 @@ export const SwissGrid = ({ children }: { children: React.ReactNode }) => {
         {/* Footer - stays above hovered cards */}
         <div className="p-4 bg-background flex justify-between items-center font-mono text-xs text-blue-700 border-t border-black shrink-0 relative z-30">
           <div className="flex items-center gap-2">
-            <Image
-              src="/logo.svg"
-              alt="Resume Matcher"
-              width={20}
-              height={20}
-              className="w-5 h-5"
-            />
-            <span className="uppercase font-bold">Resume Matcher</span>
+            <Image src="/logo.svg" alt="CareerPilot" width={20} height={20} className="w-5 h-5" />
+            <span className="uppercase font-bold">CareerPilot</span>
           </div>
           <div className="flex items-center gap-4">
             <Link

@@ -1,6 +1,6 @@
 # Frontend API Client
 
-> API client layer for Resume Matcher frontend.
+> API client layer for CareerPilot frontend.
 
 ## Base Client (`lib/api/client.ts`)
 

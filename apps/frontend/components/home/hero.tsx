@@ -40,7 +40,7 @@ export default function Hero() {
             GitHub
           </a>
           <a
-            href="https://resumematcher.fyi"
+            href="/careerpilot"
             target="_blank"
             rel="noopener noreferrer"
             className={buttonClass}

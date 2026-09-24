@@ -1776,7 +1776,7 @@ const ResumeBuilderContent = () => {
           <span className="uppercase font-bold flex items-center gap-2">
             <Image
               src="/logo.svg"
-              alt="Resume Matcher"
+              alt="CareerPilot"
               width={20}
               height={20}
               className="w-5 h-5"

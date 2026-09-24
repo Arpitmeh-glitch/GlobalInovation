@@ -457,21 +457,6 @@ export default function DashboardPage() {
         </div>
       )}
 
-      <nav aria-label="CareerPilot navigation" className="flex flex-wrap items-center gap-3 border border-black bg-white p-3 shadow-sw-sm">
-        <Link href="/careerpilot" className="font-mono text-xs font-bold uppercase text-blue-700">
-          CareerPilot
-        </Link>
-        <Link href="/careerpilot/jobs" className="font-mono text-xs uppercase text-ink-soft hover:text-blue-700">
-          Discover Jobs
-        </Link>
-        <Link href="/careerpilot/applications" className="font-mono text-xs uppercase text-ink-soft hover:text-blue-700">
-          Applications
-        </Link>
-        <Link href="/careerpilot/onboarding" className="font-mono text-xs uppercase text-ink-soft hover:text-blue-700">
-          Career Profile
-        </Link>
-      </nav>
-
       <SwissGrid>
         {/* 1. Master Resume Logic */}
         {!masterResumeId ? (

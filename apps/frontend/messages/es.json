@@ -34,8 +34,8 @@
     "resumeDeleted": "Este currículum se eliminó. Sube o selecciona otro."
   },
   "home": {
-    "brandLine1": "Currículum",
-    "brandLine2": "Matcher",
+    "brandLine1": "Career",
+    "brandLine2": "Pilot",
     "docs": "Guía de uso",
     "launchApp": "Iniciar app"
   },
@@ -376,7 +376,7 @@
           "website": "Sitio web"
         },
         "placeholders": {
-          "projectName": "Resume Matcher",
+          "projectName": "CareerPilot",
           "role": "Creador",
           "years": "Mar 2023",
           "github": "github.com/usuario/proyecto",
@@ -1004,7 +1004,7 @@
       "upload": {
         "kicker": "Archivo existente",
         "title": "Subir un currículum",
-        "description": "Empieza con un archivo PDF, DOC o DOCX y deja que Resume Matcher lo convierta en tu perfil maestro.",
+        "description": "Empieza con un archivo PDF, DOC o DOCX y deja que CareerPilot lo convierta en tu perfil maestro.",
         "action": "Subir currículum"
       },
       "wizard": {

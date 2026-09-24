@@ -1,10 +1,10 @@
 # Scope and Principles
 
-> **Canonical source for agent behavior rules in Resume Matcher.**
+> **Canonical source for agent behavior rules in CareerPilot.**
 
 ## What This Repo Is
 
-Resume Matcher is an AI-powered application that helps users tailor resumes to job descriptions. It consists of:
+CareerPilot is an AI-powered application that helps users tailor resumes to job descriptions. It consists of:
 
 - **Backend**: FastAPI + Python 3.13+ with multi-provider LLM support via LiteLLM
 - **Frontend**: Next.js 16 + React 19 with Swiss International Style design

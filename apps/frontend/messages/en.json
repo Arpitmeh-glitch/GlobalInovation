@@ -34,8 +34,8 @@
     "resumeDeleted": "This resume was deleted. Upload or select another resume."
   },
   "home": {
-    "brandLine1": "Resume",
-    "brandLine2": "Matcher",
+    "brandLine1": "Career",
+    "brandLine2": "Pilot",
     "docs": "Docs",
     "launchApp": "Launch App"
   },
@@ -376,7 +376,7 @@
           "website": "Website"
         },
         "placeholders": {
-          "projectName": "Resume Matcher",
+          "projectName": "CareerPilot",
           "role": "Creator",
           "years": "Mar 2023",
           "github": "github.com/username/project",
@@ -1004,7 +1004,7 @@
       "upload": {
         "kicker": "Existing File",
         "title": "Upload a resume",
-        "description": "Start from a PDF, DOC, or DOCX file and let Resume Matcher parse it into your master profile.",
+        "description": "Start from a PDF, DOC, or DOCX file and let CareerPilot parse it into your master profile.",
         "action": "Upload Resume"
       },
       "wizard": {
