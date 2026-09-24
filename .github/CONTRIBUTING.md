@@ -1,6 +1,6 @@
 # Contributing to Resume-Matcher on GitHub
 
-Thank you for taking the time to contribute to [Resume-Matcher](https://github.com/srbhr/Resume-Matcher).
+Thank you for taking the time to contribute to [Resume-Matcher](https://github.com/Arpitmeh-glitch/GlobalInovation).
 
 We want you to have a great experience making your first contribution.
 
@@ -42,7 +42,7 @@ Follow these steps to set up the environment and run the application.
 
 ## How to install
 
-1. Fork the repository [here](https://github.com/srbhr/Resume-Matcher/fork).
+1. Fork the repository [here](https://github.com/Arpitmeh-glitch/GlobalInovation/fork).
 
 2. Clone the forked repository.
 
@@ -198,9 +198,9 @@ Pull Requests & Issues are not just welcomed, they're celebrated! Let's create t
 
 💡 Spot a problem? Create an issue!
 
-👩‍💻 Dive in and help resolve existing [issues](https://github.com/srbhr/Resume-Matcher/issues).
+👩‍💻 Dive in and help resolve existing [issues](https://github.com/Arpitmeh-glitch/GlobalInovation/issues).
 
-🔔 Share your thoughts in our [Discussions & Announcements](https://github.com/srbhr/Resume-Matcher/discussions).
+🔔 Share your thoughts in our [Discussions & Announcements](https://github.com/Arpitmeh-glitch/GlobalInovation/discussions).
 
 🚀 Explore and improve our [Landing Page](https://github.com/srbhr/website-for-resume-matcher). PRs always welcome!
 
