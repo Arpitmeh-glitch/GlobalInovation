@@ -115,9 +115,6 @@ RUN python -m playwright install chromium
 # Expose the public port (backend remains internal on 8000)
 EXPOSE 3000
 
-# Volume for persistent data
-VOLUME ["/app/backend/data"]
-
 # Set working directory
 WORKDIR /app
 
