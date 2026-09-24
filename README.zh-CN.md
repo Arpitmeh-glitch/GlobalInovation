@@ -1,12 +1,12 @@
 <div align="center">
 
-[![Resume Matcher](assets/header.png)](https://www.resumematcher.fyi)
+[![Resume Matcher](assets/header.png)](https://arpitmehrotra.vercel.app/)
 
 # Resume Matcher
 
 [English](README.md) | [Español](README.es.md) | **简体中文** | [日本語](README.ja.md)
 
-[𝙹𝚘𝚒𝚗 𝙳𝚒𝚜𝚌𝚘𝚛𝚍](https://dsc.gg/resume-matcher) ✦ [𝚆𝚎𝚋𝚜𝚒𝚝𝚎](https://resumematcher.fyi) ✦ [𝙷𝚘𝚠 𝚝𝚘 𝙸𝚗𝚜𝚝𝚊𝚕𝚕](https://resumematcher.fyi/docs/installation) ✦ [𝙲𝚘𝚗𝚝𝚛𝚒𝚋𝚞𝚝𝚘𝚛𝚜](#contributors) ✦ [𝚂𝚙𝚘𝚗𝚜𝚘𝚛](#sponsors) ✦ [𝚃𝚠𝚒𝚝𝚝𝚎𝚛/𝚇](https://twitter.com/srbhrai) ✦ [𝙻𝚒𝚗𝚔𝚎𝚍𝙸𝚗](https://www.linkedin.com/company/resume-matcher/) ✦ [𝙲𝚛𝚎𝚊𝚝𝚘𝚛](https://srbhr.com)
+[𝙹𝚘𝚒𝚗 𝙳𝚒𝚜𝚌𝚘𝚛𝚍](https://dsc.gg/resume-matcher) ✦ [𝚆𝚎𝚋𝚜𝚒𝚝𝚎](https://arpitmehrotra.vercel.app/) ✦ [𝙷𝚘𝚠 𝚝𝚘 𝙸𝚗𝚜𝚝𝚊𝚕𝚕](https://arpitmehrotra.vercel.app/) ✦ [𝙲𝚘𝚗𝚝𝚛𝚒𝚋𝚞𝚝𝚘𝚛𝚜](#contributors) ✦ [𝙻𝚒𝚗𝚔𝚎𝚍𝙸𝚗](https://www.linkedin.com/in/arpitmehrotra-dev/)
 
 为每一次求职投递生成量身定制的简历：AI 给出可执行的优化建议。支持本地使用 Ollama 运行，也可通过 API 连接你常用的 LLM 提供商。
 
@@ -18,26 +18,12 @@
 
 <div align="center">
 
-![Stars](https://img.shields.io/github/stars/srbhr/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
-![Apache 2.0](https://img.shields.io/github/license/srbhr/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![Forks](https://img.shields.io/github/forks/srbhr/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![version](https://img.shields.io/badge/Version-1.3%20Crescendolls%20-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
+![Stars](https://img.shields.io/github/stars/Arpitmeh-glitch/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
+![Apache 2.0](https://img.shields.io/github/license/Arpitmeh-glitch/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![Forks](https://img.shields.io/github/forks/Arpitmeh-glitch/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![version](https://img.shields.io/badge/Version-1.3%20Crescendolls%20-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
 
-[![Discord](https://img.shields.io/discord/1122069176962531400?labelColor=F0F0E8&logo=discord&logoColor=1d4ed8&style=for-the-badge&color=1d4ed8)](https://dsc.gg/resume-matcher) [![Website](https://img.shields.io/badge/website-Resume%20Matcher-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://resumematcher.fyi) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Resume%20Matcher-FFF?labelColor=F0F0E8&logo=LinkedIn&style=for-the-badge&color=1d4ed8)](https://www.linkedin.com/company/resume-matcher/)
-
-<a href="https://trendshift.io/repositories/565" target="_blank"><img src="https://trendshift.io/api/badge/repositories/565" alt="srbhr%2FResume-Matcher | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+[![Discord](https://img.shields.io/discord/1122069176962531400?labelColor=F0F0E8&logo=discord&logoColor=1d4ed8&style=for-the-badge&color=1d4ed8)](https://dsc.gg/resume-matcher) [![Website](https://img.shields.io/badge/website-Arpit%20Mehrotra-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://arpitmehrotra.vercel.app/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Arpit%20Mehrotra-FFF?labelColor=F0F0E8&logo=LinkedIn&style=for-the-badge&color=1d4ed8)](https://www.linkedin.com/in/arpitmehrotra-dev/)
 
 ![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)
-
-</div>
-
-> \[!IMPORTANT]
->
-> 本项目需要你的帮助与支持。如果你能捐赠一点点，就能帮助我持续开发和改进 Resume Matcher。
-
-<div align="center">
-
-[![Sponsor on GitHub](https://img.shields.io/github/sponsors/srbhr?style=for-the-badge&label=Sponsor&color=1d4ed8&labelColor=F0F0E8&logo=github&logoColor=black)](https://github.com/sponsors/srbhr) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&color=1d4ed8&labelColor=F0F0E8&logoColor=black)](https://www.buymeacoffee.com/srbhr)
-
-**代表公司赞助？** 让你的 Logo 展示在 27k+ 开发者面前 → **[成为赞助商 ↓](#sponsors)**
 
 </div>
 
@@ -68,53 +54,16 @@ Resume Matcher 的工作方式是先建立一份“主简历”，然后针对�
 
 给仓库点 Star 来支持开发，并及时获取新版本通知。
 
-<a id="sponsors"></a>
-
-## 赞助商
-
-![sponsors](assets/sponsors.png)
-
-Resume Matcher 是免费且开源的，依靠赞助商与支持者维持运转。如果它对你有帮助，欢迎支持它的开发。
-
-### 支持 Resume Matcher 的公司
-
-以公司档位赞助，**你的 Logo + 链接 + 简介将展示在这里** —— 面向 **27k+ Star、4.9k Fork** 的社区，并登上 [Trendshift](https://trendshift.io/repositories/565) 与 [Vercel OSS 计划](https://vercel.com/oss)。
-
-| Sponsor | Description |
-|---------|-------------|
-| [APIDECK](https://apideck.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | One API to connect your app to 200+ SaaS platforms (accounting, HRIS, CRM, file storage). Build integrations once, not 50 times. 🌐 [apideck.com](https://apideck.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Vercel](https://vercel.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Resume Matcher 是 Vercel OSS // Summer 2025 计划的一部分 🌐 [vercel.com](https://vercel.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Cubic.dev](https://cubic.dev?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Cubic 为 Resume Matcher 提供 PR 审查 🌐 [cubic.dev](https://cubic.dev?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Kilo Code](https://kilo.ai?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Kilo Code 为 Resume Matcher 提供 AI 代码审查和编码积分 🌐 [kilo.ai](https://kilo.ai?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [ZanReal](https://zanreal.com/?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | ZanReal 是一家以 AI 驱动的开发公司，构建可扩展的云解决方案，从战略、UX 到 DevOps，帮助团队更快交付、把创意变为产品。 🌐 [zanreal.com](https://zanreal.com/?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| **✦ 你的公司可展示于此** | 触达 27k+ 开发者与 4.9k Fork。**[成为赞助商 →](https://github.com/sponsors/srbhr)** |
-
-请阅读我们的 [Sponsorship Guide](https://resumematcher.fyi/docs/sponsoring) 了解您的赞助如何帮助本项目。您将在 ReadME 和我们的网站上获得特别鸣谢。
-
-<a id="support-the-development-by-donating"></a>
-
-### 以个人身份支持
-
-![donate](assets/supporting_resume_matcher.png)
-
-每一份支持都让 Resume Matcher 保持免费，并资助新功能的开发 —— 你也会在 ReadME 和我们的网站上获得鸣谢。
-
-| 平台  | 链接 |
-|------|------|
-| GitHub | [![GitHub Sponsors](https://img.shields.io/github/sponsors/srbhr?style=for-the-badge&color=1d4ed8&labelColor=F0F0E8&logo=github&logoColor=black)](https://github.com/sponsors/srbhr) |
-| Buy Me a Coffee | [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&color=1d4ed8&labelColor=F0F0E8&logoColor=black)](https://www.buymeacoffee.com/srbhr) |
-
 ## 创作者留言
 
 感谢您关注 Resume Matcher。如果您想联系、合作或只是打个招呼，请随时联系我！
-~ **Saurabh Rai** ✨
+~ **Arpit Mehrotra** ✨
 
 您可以在以下平台关注我：
 
-- Website: [https://srbhr.com](https://srbhr.com)
-- Linkedin: [https://www.linkedin.com/in/srbhr/](https://www.linkedin.com/in/srbhr/)
-- Twitter: [https://twitter.com/srbhrai](https://twitter.com/srbhrai)
-- GitHub: [https://github.com/srbhr](https://github.com/srbhr)
+- Website: [https://arpitmehrotra.vercel.app/](https://arpitmehrotra.vercel.app/)
+- Linkedin: [https://www.linkedin.com/in/arpitmehrotra-dev/](https://www.linkedin.com/in/arpitmehrotra-dev/)
+- GitHub: [https://github.com/Arpitmeh-glitch](https://github.com/Arpitmeh-glitch)
 
 ## 主要功能
 
@@ -199,7 +148,7 @@ Resume Matcher 是免费且开源的，依靠赞助商与支持者维持运转�
 
 ```bash
 # 克隆仓库
-git clone https://github.com/srbhr/Resume-Matcher.git
+git clone https://github.com/Arpitmeh-glitch/Resume-Matcher.git
 cd Resume-Matcher
 
 # 后端（终端 1）
@@ -230,9 +179,9 @@ npm run dev
 ### Docker 部署
 
 ```bash
-docker pull srbhr/resume-matcher:latest
+docker pull Arpitmeh-glitch/resume-matcher:latest
 
-docker run srbhr/resume-matcher:latest
+docker run Arpitmeh-glitch/resume-matcher:latest
 ```
 
 <!-- 注意：Docker 文档正在编写中。目前请参考 docker-compose.yml -->
@@ -253,7 +202,7 @@ docker run srbhr/resume-matcher:latest
 
 ![how to contribute](assets/how_to_contribute.png)
 
-我们欢迎所有人的贡献！无论你是开发者、设计师，还是希望帮忙的用户。所有贡献者都会展示在我们官网的 [about 页面](https://resumematcher.fyi/about)，也会显示在 GitHub README 中。
+我们欢迎所有人的贡献！无论你是开发者、设计师，还是希望帮忙的用户。所有贡献者都会展示在我们官网，也会显示在 GitHub README 中。
 
 如果你希望参与未来规划的功能，可以先看看路线图。若你有建议或功能需求，欢迎在 GitHub 提 Issue，并在我们的 [Discord](https://dsc.gg/resume-matcher) 讨论。
 
@@ -263,8 +212,13 @@ docker run srbhr/resume-matcher:latest
 
 ![Contributors](assets/contributors.png)
 
-<a href="https://github.com/srbhr/Resume-Matcher/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=srbhr/Resume-Matcher" />
+- Arpit Mehrotra
+- Kavya Parmar
+- Tarun Mittal
+- Aman Mishra
+
+<a href="https://github.com/Arpitmeh-glitch/Resume-Matcher/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Arpitmeh-glitch/Resume-Matcher" />
 </a>
 
 <br/>
@@ -272,8 +226,8 @@ docker run srbhr/resume-matcher:latest
 <details>
   <summary><kbd>Star 历史</kbd></summary>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=srbhr/resume-matcher&theme=dark&type=Date">
-    <img width="100%" src="https://star-history.dera.page/svg?repos=srbhr/resume-matcher&theme=dark&type=Date">
+    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=Arpitmeh-glitch/resume-matcher&theme=dark&type=Date">
+    <img width="100%" src="https://star-history.dera.page/svg?repos=Arpitmeh-glitch/resume-matcher&theme=dark&type=Date">
   </picture>
 </details>
 

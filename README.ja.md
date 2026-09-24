@@ -1,12 +1,12 @@
 <div align="center">
 
-[![Resume Matcher](assets/header.png)](https://www.resumematcher.fyi)
+[![Resume Matcher](assets/header.png)](https://arpitmehrotra.vercel.app/)
 
 # Resume Matcher
 
 [English](README.md) | [Español](README.es.md) | [简体中文](README.zh-CN.md) | **日本語**
 
-[𝙹𝚘𝚒𝚗 𝙳𝚒𝚜𝚌𝚘𝚛𝚍](https://dsc.gg/resume-matcher) ✦ [𝚆𝚎𝚋𝚜𝚒𝚝𝚎](https://resumematcher.fyi) ✦ [𝙷𝚘𝚠 𝚝𝚘 𝙸𝚗𝚜𝚝𝚊𝚕𝚕](https://resumematcher.fyi/docs/installation) ✦ [𝙲𝚘𝚗𝚝𝚛𝚒𝚋𝚞𝚝𝚘𝚛𝚜](#contributors) ✦ [𝚂𝚙𝚘𝚗𝚜𝚘𝚛](#sponsors) ✦ [𝚃𝚠𝚒𝚝𝚝𝚎𝚛/𝚇](https://twitter.com/srbhrai) ✦ [𝙻𝚒𝚗𝚔𝚎𝚍𝙸𝚗](https://www.linkedin.com/company/resume-matcher/) ✦ [𝙲𝚛𝚎𝚊𝚝𝚘𝚛](https://srbhr.com)
+[𝙹𝚘𝚒𝚗 𝙳𝚒𝚜𝚌𝚘𝚛𝚍](https://dsc.gg/resume-matcher) ✦ [𝚆𝚎𝚋𝚜𝚒𝚝𝚎](https://arpitmehrotra.vercel.app/) ✦ [𝙷𝚘𝚠 𝚝𝚘 𝙸𝚗𝚜𝚝𝚊𝚕𝚕](https://arpitmehrotra.vercel.app/) ✦ [𝙲𝚘𝚗𝚝𝚛𝚒𝚋𝚞𝚝𝚘𝚛𝚜](#contributors) ✦ [𝙻𝚒𝚗𝚔𝚎𝚍𝙸𝚗](https://www.linkedin.com/in/arpitmehrotra-dev/)
 
 求人ごとに最適化した履歴書を、AI の提案で作成できます。Ollama を使ってローカルで動かすことも、API 経由でお気に入りの LLM プロバイダに接続することも可能です。
 
@@ -18,26 +18,12 @@
 
 <div align="center">
 
-![Stars](https://img.shields.io/github/stars/srbhr/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
-![Apache 2.0](https://img.shields.io/github/license/srbhr/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![Forks](https://img.shields.io/github/forks/srbhr/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![version](https://img.shields.io/badge/Version-1.3%20Crescendolls%20-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
+![Stars](https://img.shields.io/github/stars/Arpitmeh-glitch/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
+![Apache 2.0](https://img.shields.io/github/license/Arpitmeh-glitch/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![Forks](https://img.shields.io/github/forks/Arpitmeh-glitch/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![version](https://img.shields.io/badge/Version-1.3%20Crescendolls%20-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
 
-[![Discord](https://img.shields.io/discord/1122069176962531400?labelColor=F0F0E8&logo=discord&logoColor=1d4ed8&style=for-the-badge&color=1d4ed8)](https://dsc.gg/resume-matcher) [![Website](https://img.shields.io/badge/website-Resume%20Matcher-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://resumematcher.fyi) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Resume%20Matcher-FFF?labelColor=F0F0E8&logo=LinkedIn&style=for-the-badge&color=1d4ed8)](https://www.linkedin.com/company/resume-matcher/)
-
-<a href="https://trendshift.io/repositories/565" target="_blank"><img src="https://trendshift.io/api/badge/repositories/565" alt="srbhr%2FResume-Matcher | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+[![Discord](https://img.shields.io/discord/1122069176962531400?labelColor=F0F0E8&logo=discord&logoColor=1d4ed8&style=for-the-badge&color=1d4ed8)](https://dsc.gg/resume-matcher) [![Website](https://img.shields.io/badge/website-Arpit%20Mehrotra-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://arpitmehrotra.vercel.app/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Arpit%20Mehrotra-FFF?labelColor=F0F0E8&logo=LinkedIn&style=for-the-badge&color=1d4ed8)](https://www.linkedin.com/in/arpitmehrotra-dev/)
 
 ![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)
-
-</div>
-
-> \[!IMPORTANT]
->
-> 本プロジェクトには皆さまの支援が必要です。少額でもご寄付いただけると、Resume Matcher の開発と改善を続ける力になります。
-
-<div align="center">
-
-[![Sponsor on GitHub](https://img.shields.io/github/sponsors/srbhr?style=for-the-badge&label=Sponsor&color=1d4ed8&labelColor=F0F0E8&logo=github&logoColor=black)](https://github.com/sponsors/srbhr) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&color=1d4ed8&labelColor=F0F0E8&logoColor=black)](https://www.buymeacoffee.com/srbhr)
-
-**企業としてのスポンサーをご検討ですか？** あなたのロゴを 27k 人超の開発者に届けましょう → **[スポンサーになる ↓](#sponsors)**
 
 </div>
 
@@ -68,53 +54,16 @@ Resume Matcher は、まず「マスター履歴書」を作り、それを各�
 
 Star を付けていただけると開発の励みになります（リリース通知も受け取れます）。
 
-<a id="sponsors"></a>
-
-## スポンサー
-
-![sponsors](assets/sponsors.png)
-
-Resume Matcher は無料かつオープンソースで、スポンサーと支援者の皆さまによって支えられています。役立つと感じたら、開発の支援をご検討ください。
-
-### Resume Matcher を支える企業
-
-企業ティアでスポンサーになると、**あなたのロゴ・リンク・紹介文がここに掲載されます** —— **27k 超の Star と 4.9k の Fork** を持つコミュニティに向けて。[Trendshift](https://trendshift.io/repositories/565) や [Vercel OSS プログラム](https://vercel.com/oss) にも掲載されています。
-
-| Sponsor | Description |
-|---------|-------------|
-| [APIDECK](https://apideck.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | アプリを200以上のSaaSプラットフォーム（会計、HRIS、CRM、ファイルストレージ）に接続する単一のAPI。50回ではなく、1回の構築で統合を実現します。 🌐 [apideck.com](https://apideck.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Vercel](https://vercel.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Resume Matcher は Vercel OSS // Summer 2025 プログラムの一部です 🌐 [vercel.com](https://vercel.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Cubic.dev](https://cubic.dev?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Cubic は Resume Matcher に PR レビューを提供しています 🌐 [cubic.dev](https://cubic.dev?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Kilo Code](https://kilo.ai?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Kilo Code は Resume Matcher に AI コードレビューとコーディングクレジットを提供しています 🌐 [kilo.ai](https://kilo.ai?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [ZanReal](https://zanreal.com/?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | ZanReal は AI 駆動の開発企業で、戦略・UX から DevOps まで、スケーラブルなクラウドソリューションを構築し、チームがより速くリリースしアイデアを本番へと導く支援をしています。 🌐 [zanreal.com](https://zanreal.com/?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| **✦ あなたの企業のロゴをここに** | 27k 超の開発者と 4.9k の Fork にリーチ。**[スポンサーになる →](https://github.com/sponsors/srbhr)** |
-
-スポンサーシップがプロジェクトにどのように役立つかについての詳細は、[Sponsorship Guide](https://resumematcher.fyi/docs/sponsoring) をご覧ください。ReadME およびウェブサイトにて特別に感謝の意を表します。
-
-<a id="support-the-development-by-donating"></a>
-
-### 個人として支援する
-
-![donate](assets/supporting_resume_matcher.png)
-
-少額の支援でも Resume Matcher を無料に保ち、新機能の開発を支えます —— ReadME とウェブサイトにて感謝の意をお伝えします。
-
-| プラットフォーム | リンク |
-|------------------|--------|
-| GitHub | [![GitHub Sponsors](https://img.shields.io/github/sponsors/srbhr?style=for-the-badge&color=1d4ed8&labelColor=F0F0E8&logo=github&logoColor=black)](https://github.com/sponsors/srbhr) |
-| Buy Me a Coffee | [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&color=1d4ed8&labelColor=F0F0E8&logoColor=black)](https://www.buymeacoffee.com/srbhr) |
-
 ## 制作者ノート
 
 Resume Matcher をご覧いただきありがとうございます。つながりやコラボレーション、あるいは挨拶だけでも、お気軽にご連絡ください！
-~ **Saurabh Rai** ✨
+~ **Arpit Mehrotra** ✨
 
 以下でフォローできます：
 
-- Website: [https://srbhr.com](https://srbhr.com)
-- Linkedin: [https://www.linkedin.com/in/srbhr/](https://www.linkedin.com/in/srbhr/)
-- Twitter: [https://twitter.com/srbhrai](https://twitter.com/srbhrai)
-- GitHub: [https://github.com/srbhr](https://github.com/srbhr)
+- Website: [https://arpitmehrotra.vercel.app/](https://arpitmehrotra.vercel.app/)
+- Linkedin: [https://www.linkedin.com/in/arpitmehrotra-dev/](https://www.linkedin.com/in/arpitmehrotra-dev/)
+- GitHub: [https://github.com/Arpitmeh-glitch](https://github.com/Arpitmeh-glitch)
 
 ## 主な機能
 
@@ -199,7 +148,7 @@ MacOS / WSL / Ubuntu で最も手早い手順：
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/srbhr/Resume-Matcher.git
+git clone https://github.com/Arpitmeh-glitch/Resume-Matcher.git
 cd Resume-Matcher
 
 # バックエンド（ターミナル 1）
@@ -230,9 +179,9 @@ npm run dev
 ### Docker デプロイ
 
 ```bash
-docker pull srbhr/resume-matcher:latest
+docker pull Arpitmeh-glitch/resume-matcher:latest
 
-docker run srbhr/resume-matcher:latest
+docker run Arpitmeh-glitch/resume-matcher:latest
 ```
 
 <!-- 注：Docker ドキュメントは準備中です。現在は docker-compose.yml を参照してください -->
@@ -253,7 +202,7 @@ docker run srbhr/resume-matcher:latest
 
 ![how to contribute](assets/how_to_contribute.png)
 
-どなたでもコントリビュート歓迎です。開発者・デザイナー・ユーザーを問わず、協力してくれる方を募集しています。コントリビューター一覧は、公式サイトの [about ページ](https://resumematcher.fyi/about) と GitHub README に掲載されています。
+どなたでもコントリビュート歓迎です。開発者・デザイナー・ユーザーを問わず、協力してくれる方を募集しています。コントリビューター一覧は、公式サイトと GitHub README に掲載されています。
 
 ロードマップも参考にしてください。提案や機能要望があれば、GitHub で Issue を作成し、[Discord](https://dsc.gg/resume-matcher) でも議論できます。
 
@@ -263,8 +212,13 @@ docker run srbhr/resume-matcher:latest
 
 ![Contributors](assets/contributors.png)
 
-<a href="https://github.com/srbhr/Resume-Matcher/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=srbhr/Resume-Matcher" />
+- Arpit Mehrotra
+- Kavya Parmar
+- Tarun Mittal
+- Aman Mishra
+
+<a href="https://github.com/Arpitmeh-glitch/Resume-Matcher/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Arpitmeh-glitch/Resume-Matcher" />
 </a>
 
 <br/>
@@ -272,8 +226,8 @@ docker run srbhr/resume-matcher:latest
 <details>
   <summary><kbd>Star の推移</kbd></summary>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=srbhr/resume-matcher&theme=dark&type=Date">
-    <img width="100%" src="https://star-history.dera.page/svg?repos=srbhr/resume-matcher&theme=dark&type=Date">
+    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=Arpitmeh-glitch/resume-matcher&theme=dark&type=Date">
+    <img width="100%" src="https://star-history.dera.page/svg?repos=Arpitmeh-glitch/resume-matcher&theme=dark&type=Date">
   </picture>
 </details>
 

@@ -1,10 +1,10 @@
 <div align="center">
 
-[![CareerPilot](assets/header.png)](https://www.resumematcher.fyi)
+[![CareerPilot](assets/header.png)](https://arpitmehrotra.vercel.app/)
 
 # CareerPilot
 
-[𝙹𝚘𝚒𝚗 𝙳𝚒𝚜𝚌𝚘𝚛𝚍](https://dsc.gg/resume-matcher) ✦ [𝚆𝚎𝚋𝚜𝚒𝚝𝚎](https://resumematcher.fyi) ✦ [𝙷𝚘𝚠 𝚝𝚘 𝙸𝚗𝚜𝚝𝚊𝚕𝚕](https://resumematcher.fyi/docs/installation) ✦ [𝙲𝚘𝚗𝚝𝚛𝚒𝚋𝚞𝚝𝚘𝚛𝚜](#contributors) ✦ [𝚂𝚙𝚘𝚗𝚜𝚘𝚛](#sponsors) ✦ [𝚃𝚠𝚒𝚝𝚝𝚎𝚛/𝚇](https://twitter.com/srbhrai) ✦ [𝙻𝚒𝚗𝚔𝚎𝚍𝙸𝚗](https://www.linkedin.com/company/resume-matcher/) ✦ [𝙲𝚛𝚎𝚊𝚝𝚘𝚛](https://srbhr.com)
+[𝙹𝚘𝚒𝚗 𝙳𝚒𝚜𝚌𝚘𝚛𝚍](https://dsc.gg/resume-matcher) ✦ [𝚆𝚎𝚋𝚜𝚒𝚝𝚎](https://arpitmehrotra.vercel.app/) ✦ [𝙷𝚘𝚠 𝚝𝚘 𝙸𝚗𝚜𝚝𝚊𝚕𝚕](https://arpitmehrotra.vercel.app/) ✦ [𝙲𝚘𝚗𝚝𝚛𝚒𝚋𝚞𝚝𝚘𝚛𝚜](#contributors) ✦ [𝙻𝚒𝚗𝚔𝚎𝚍𝙸𝚗](https://www.linkedin.com/in/arpitmehrotra-dev/)
 
 **English** | [Español](README.es.md) | [简体中文](README.zh-CN.md) | [日本語](README.ja.md)
 
@@ -18,26 +18,12 @@ The AI harness to build tailored resumes for each job application with Claude, C
 
 <div align="center">
 
-![Stars](https://img.shields.io/github/stars/srbhr/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
-![Apache 2.0](https://img.shields.io/github/license/srbhr/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![Forks](https://img.shields.io/github/forks/srbhr/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![version](https://img.shields.io/badge/Version-1.3%20Crescendolls%20-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
+![Stars](https://img.shields.io/github/stars/Arpitmeh-glitch/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
+![Apache 2.0](https://img.shields.io/github/license/Arpitmeh-glitch/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![Forks](https://img.shields.io/github/forks/Arpitmeh-glitch/Resume-Matcher?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8) ![version](https://img.shields.io/badge/Version-1.3%20Crescendolls%20-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)
 
-[![Discord](https://img.shields.io/discord/1122069176962531400?labelColor=F0F0E8&logo=discord&logoColor=1d4ed8&style=for-the-badge&color=1d4ed8)](https://dsc.gg/resume-matcher) [![Website](https://img.shields.io/badge/website-Resume%20Matcher-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://resumematcher.fyi) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Resume%20Matcher-FFF?labelColor=F0F0E8&logo=LinkedIn&style=for-the-badge&color=1d4ed8)](https://www.linkedin.com/company/resume-matcher/)
-
-<a href="https://trendshift.io/repositories/565" target="_blank"><img src="https://trendshift.io/api/badge/repositories/565" alt="srbhr%2FResume-Matcher | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+[![Discord](https://img.shields.io/discord/1122069176962531400?labelColor=F0F0E8&logo=discord&logoColor=1d4ed8&style=for-the-badge&color=1d4ed8)](https://dsc.gg/resume-matcher) [![Website](https://img.shields.io/badge/website-Arpit%20Mehrotra-FFF?labelColor=F0F0E8&style=for-the-badge&color=1d4ed8)](https://arpitmehrotra.vercel.app/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Arpit%20Mehrotra-FFF?labelColor=F0F0E8&logo=LinkedIn&style=for-the-badge&color=1d4ed8)](https://www.linkedin.com/in/arpitmehrotra-dev/)
 
 ![Vercel OSS Program](https://vercel.com/oss/program-badge.svg)
-
-</div>
-
-> \[!IMPORTANT]
->
-> The project needs your help and support. If you can donate a small amount, that will help me to continue developing and improving CareerPilot.
-
-<div align="center">
-
-[![Sponsor on GitHub](https://img.shields.io/github/sponsors/srbhr?style=for-the-badge&label=Sponsor&color=1d4ed8&labelColor=F0F0E8&logo=github&logoColor=black)](https://github.com/sponsors/srbhr) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&color=1d4ed8&labelColor=F0F0E8&logoColor=black)](https://www.buymeacoffee.com/srbhr)
-
-**Sponsoring for a company?** Put your logo in front of 27k+ developers → **[become a sponsor ↓](#sponsors)**
 
 </div>
 
@@ -80,53 +66,18 @@ Follow us on [LinkedIn](https://www.linkedin.com/company/resume-matcher/) for up
 
 Star the repo to support development and get notified of new releases.
 
-## Sponsors
-
-![sponsors](assets/sponsors.png)
-
-CareerPilot is free and open-source, kept alive by its sponsors and backers. If it helps you, please consider supporting its development.
-
-### Companies backing CareerPilot
-
-Sponsor at a company tier and **your logo + link + blurb lands here** — in front of a community of **27k+ stars and 4.9k forks**, featured on [Trendshift](https://trendshift.io/repositories/565) and the [Vercel OSS Program](https://vercel.com/oss).
-
-| Sponsor | Description |
-|---------|-------------|
-| [Apideck](https://apideck.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | One API to connect your app to 200+ SaaS platforms (accounting, HRIS, CRM, file storage). Build integrations once, not 50 times. 🌐 [apideck.com](https://apideck.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Vercel](https://vercel.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | CareerPilot is a part of Vercel OSS // Summer 2025 Program 🌐 [vercel.com](https://vercel.com?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Cubic.dev](https://cubic.dev?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Cubic provides PR reviews for CareerPilot 🌐 [cubic.dev](https://cubic.dev?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [Kilo Code](https://kilo.ai?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | Kilo Code provides AI code reviews and coding credits to CareerPilot 🌐 [kilo.ai](https://kilo.ai?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| [ZanReal](https://zanreal.com/?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) | ZanReal is an AI-driven development company building scalable cloud solutions, from strategy and UX to DevOps, helping teams ship faster and turn ideas into production. 🌐 [zanreal.com](https://zanreal.com/?utm_source=resumematcher&utm_medium=github&utm_campaign=sponsors) |
-| **✦ Your company here** | Reach 27k+ developers and 4.9k forks. **[Become a sponsor →](https://github.com/sponsors/srbhr)** |
-
-Read the [Sponsorship Guide](https://resumematcher.fyi/docs/sponsoring) for tiers and details. Sponsors get a special thank-you in the README and on our website.
-
-<a id="support-the-development-by-donating"></a>
-
-### Support as an individual
-
-![donate](assets/supporting_resume_matcher.png)
-
-Every bit keeps CareerPilot free and funds new features — and you'll be thanked in the README and on our website.
-
-| Platform  | Link                                   |
-|-----------|----------------------------------------|
-| GitHub    | [![GitHub Sponsors](https://img.shields.io/github/sponsors/srbhr?style=for-the-badge&color=1d4ed8&labelColor=F0F0E8&logo=github&logoColor=black)](https://github.com/sponsors/srbhr) |
-| Buy Me a Coffee | [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&color=1d4ed8&labelColor=F0F0E8&logoColor=black)](https://www.buymeacoffee.com/srbhr) |
-
 ## Creators' Note
 
-[![srbhr](assets/creators_note.png)](https://srbhr.com)
+[![Arpit Mehrotra](assets/creators_note.png)](https://arpitmehrotra.vercel.app/)
 
 Thank you for checking out CareerPilot. If you want to connect, collaborate, or just say hi, feel free to reach out!
-~ **Saurabh Rai** ✨
+~ **Arpit Mehrotra** ✨
 
 You can follow me on:
 
-- Website: [https://srbhr.com](https://srbhr.com)
-- Linkedin: [https://www.linkedin.com/in/srbhr/](https://www.linkedin.com/in/srbhr/)
-- Twitter: [https://twitter.com/srbhrai](https://twitter.com/srbhrai)
-- GitHub: [https://github.com/srbhr](https://github.com/srbhr)
+- Website: [https://arpitmehrotra.vercel.app/](https://arpitmehrotra.vercel.app/)
+- Linkedin: [https://www.linkedin.com/in/arpitmehrotra-dev/](https://www.linkedin.com/in/arpitmehrotra-dev/)
+- GitHub: [https://github.com/Arpitmeh-glitch](https://github.com/Arpitmeh-glitch)
 
 ## Key Features
 
@@ -215,7 +166,7 @@ Fastest for MacOS, WSL and Ubuntu users:
 
 ```bash
 # Clone the repository
-git clone https://github.com/srbhr/Resume-Matcher.git
+git clone https://github.com/Arpitmeh-glitch/Resume-Matcher.git
 cd Resume-Matcher
 
 # Backend (Terminal 1)
@@ -247,8 +198,8 @@ Open **<http://localhost:3000>** and configure your AI provider in Settings.
 
 Official Docker images are published for `linux/amd64` and `linux/arm64` on:
 
-- `ghcr.io/srbhr/resume-matcher`
-- `srbhr/resume-matcher`
+- `ghcr.io/Arpitmeh-glitch/resume-matcher`
+- `Arpitmeh-glitch/resume-matcher`
 
 Run on a single public port (`3000`) with API available at `/api`:
 
@@ -256,11 +207,11 @@ Run on a single public port (`3000`) with API available at `/api`:
 docker run --name resume-matcher \
   -p 3000:3000 \
   -v resume-data:/app/backend/data \
-  ghcr.io/srbhr/resume-matcher:latest
+  ghcr.io/Arpitmeh-glitch/resume-matcher:latest
 ```
 
-Prefer pinning a version in production, for example `ghcr.io/srbhr/resume-matcher:1.3.0` or
-`ghcr.io/srbhr/resume-matcher:1.3`.
+Prefer pinning a version in production, for example `ghcr.io/Arpitmeh-glitch/resume-matcher:1.3.0` or
+`ghcr.io/Arpitmeh-glitch/resume-matcher:1.3`.
 
 Endpoints:
 
@@ -284,7 +235,7 @@ Endpoints:
 
 ![how to contribute](assets/how_to_contribute.png)
 
-We welcome contributions from everyone! Whether you're a developer, designer, or just someone who wants to help out. All the contributors are listed in the [about page](https://resumematcher.fyi/about) on our website and on the GitHub Readme here.
+We welcome contributions from everyone! Whether you're a developer, designer, or just someone who wants to help out. All the contributors are listed on our website and on the GitHub Readme here.
 
 Check out the roadmap if you would like to work on the features that are planned for the future. If you have any suggestions or feature requests, please feel free to open an issue on GitHub and discuss it on our [Discord](https://dsc.gg/resume-matcher) server.
 
@@ -294,8 +245,13 @@ Check out the roadmap if you would like to work on the features that are planned
 
 ![Contributors](assets/contributors.png)
 
-<a href="https://github.com/srbhr/Resume-Matcher/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=srbhr/Resume-Matcher" />
+- Arpit Mehrotra
+- Kavya Parmar
+- Tarun Mittal
+- Aman Mishra
+
+<a href="https://github.com/Arpitmeh-glitch/Resume-Matcher/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Arpitmeh-glitch/Resume-Matcher" />
 </a>
 
 <br/>
@@ -303,8 +259,8 @@ Check out the roadmap if you would like to work on the features that are planned
 <details>
   <summary><kbd>Star History</kbd></summary>
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=srbhr/resume-matcher&theme=dark&type=Date">
-    <img width="100%" src="https://star-history.dera.page/svg?repos=srbhr/resume-matcher&theme=dark&type=Date">
+    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=Arpitmeh-glitch/resume-matcher&theme=dark&type=Date">
+    <img width="100%" src="https://star-history.dera.page/svg?repos=Arpitmeh-glitch/resume-matcher&theme=dark&type=Date">
   </picture>
 </details>
 
